@@ -36,10 +36,10 @@ export const metrics = [
 
 export const stack = [
   { group: 'Languages', items: ['Python', 'SQL (PostgreSQL, T-SQL)', 'TypeScript', 'R'] },
-  { group: 'Orchestration & modelling', items: ['Airflow', 'dbt', 'Meltano', 'Dimensional modelling', 'Data contracts'] },
+  { group: 'Orchestration & transformation', items: ['Airflow', 'dbt', 'Meltano'] },
   { group: 'Cloud', items: ['AWS: S3, Redshift, Glue, Lambda, Step Functions', 'Azure: Data Factory, Blob, SQL', 'GCP: BigQuery, Vertex AI'] },
   { group: 'Lakehouse & streaming', items: ['Databricks', 'Delta Lake', 'Structured Streaming', 'PySpark'] },
-  { group: 'AI engineering', items: ['MCP servers', 'AI SDK agents', 'LangGraph', 'LLM classification'] },
+  { group: 'AI engineering', items: ['MCP', 'AI SDK', 'LangGraph'] },
   { group: 'Infrastructure', items: ['Terraform', 'Docker', 'GitHub Actions', 'Git / GitLab'] },
 ] as const;
 

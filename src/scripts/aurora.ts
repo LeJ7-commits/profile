@@ -5,7 +5,12 @@
  * - Reads colours from CSS custom properties so tokens stay the source of truth.
  * - Renders at reduced resolution and pauses when off-screen or tab hidden.
  * - Honours prefers-reduced-motion by drawing a single still frame.
- * - Falls back to the CSS gradient already on the container if WebGL is absent.
+ * - Falls back to the CSS gradient already on the container if WebGL is absent,
+ *   or if the first frame comes out near-black (see `looksBroken`).
+ *
+ * Precision: the noise hash needs 32-bit floats. Many phone GPUs implement
+ * `mediump` as 16-bit, which collapses the hash to ~0 and renders the aurora as
+ * its darkest stop (near-black). So the shader asks for `highp` when available.
  */
 
 const VERT = `
@@ -14,7 +19,11 @@ void main() { gl_Position = vec4(p, 0.0, 1.0); }
 `;
 
 const FRAG = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
 uniform vec2 uRes;
 uniform float uTime;
 uniform vec2 uPointer;
@@ -81,6 +90,20 @@ function compile(gl: WebGLRenderingContext, type: number, src: string) {
   return s;
 }
 
+/**
+ * Reads the first rendered frame back and reports whether it is essentially black,
+ * which is what a GPU without enough float precision produces. A healthy frame has
+ * a mean channel value around 110-120; a precision-collapsed one is ~24.
+ */
+function looksBroken(gl: WebGLRenderingContext, canvas: HTMLCanvasElement) {
+  const w = canvas.width, h = canvas.height;
+  const px = new Uint8Array(w * h * 4);
+  gl.readPixels(0, 0, w, h, gl.RGBA, gl.UNSIGNED_BYTE, px);
+  let sum = 0;
+  for (let i = 0; i < px.length; i += 4) sum += px[i] + px[i + 1] + px[i + 2];
+  return sum / ((px.length / 4) * 3) < 45;
+}
+
 export function mountAurora(canvas: HTMLCanvasElement) {
   const gl = canvas.getContext('webgl', { antialias: false, premultipliedAlpha: false });
   if (!gl) return;
@@ -129,7 +152,8 @@ export function mountAurora(canvas: HTMLCanvasElement) {
   const draw = (now: number) => {
     pointer.x += (pointer.tx - pointer.x) * 0.03;
     pointer.y += (pointer.ty - pointer.y) * 0.03;
-    gl.uniform1f(uTime, (now - start) / 1000);
+    // Keep the time uniform small so float precision never degrades on long visits.
+    gl.uniform1f(uTime, ((now - start) / 1000) % 1200);
     gl.uniform2f(uPointer, pointer.x, pointer.y);
     gl.drawArrays(gl.TRIANGLES, 0, 3);
   };
@@ -146,6 +170,8 @@ export function mountAurora(canvas: HTMLCanvasElement) {
   };
 
   resize();
+  draw(performance.now());
+  if (looksBroken(gl, canvas)) return; // leave the CSS fallback visible
   canvas.dataset.ready = 'true';
   run();
 
