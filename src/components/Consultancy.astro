@@ -1,0 +1,46 @@
+---
+import { consultancy, services, process } from '../data/services';
+import { profile } from '../data/profile';
+---
+
+<section id="nei10x" data-band="dark" class="inverse bg-obsidian text-paper py-24 md:py-38">
+  <div class="page">
+    <div class="reveal grid gap-6 md:grid-cols-[180px_1fr] md:gap-10">
+      <p class="eyebrow flex gap-4 pt-3 opacity-70"><span>03</span><span>Consultancy</span></p>
+      <div>
+        <h2 class="text-display font-normal leading-[0.8] tracking-[-0.045em]">{consultancy.name}</h2>
+        <p class="mt-10 text-heading font-light tracking-[-0.02em] max-w-[16ch]">{consultancy.tagline}</p>
+        <p class="mt-10 text-lede font-light text-ash max-w-[38ch]">{consultancy.pitch}</p>
+      </div>
+    </div>
+
+    <ol class="mt-24 grid border-t border-hairline-inverse md:grid-cols-2">
+      {services.map((s, i) => (
+        <li class="reveal flex flex-col gap-5 border-b border-hairline-inverse py-10 md:px-[var(--card-padding)] md:odd:border-r md:odd:pl-0 md:even:pr-0" style={`--i:${i % 2}`}>
+          <span class="eyebrow text-ash">{s.n}</span>
+          <h3 class="text-subheading tracking-[-0.02em]">{s.title}</h3>
+          <p class="text-body-sm text-ash max-w-[46ch]">{s.body}</p>
+          <p class="mt-auto pt-4 text-caption"><span class="eyebrow text-ash mr-3">Proof</span>{s.proof}</p>
+        </li>
+      ))}
+    </ol>
+
+    <div class="mt-24 grid gap-10 md:grid-cols-[180px_1fr] md:gap-10">
+      <p class="reveal eyebrow opacity-70 pt-2">How it works</p>
+      <ol class="grid gap-10 sm:grid-cols-3">
+        {process.map((p, i) => (
+          <li class="reveal" style={`--i:${i}`}>
+            <p class="eyebrow text-ash mb-3">{String(i + 1).padStart(2, '0')}</p>
+            <h3 class="text-lede">{p.step}</h3>
+            <p class="mt-3 text-body-sm text-ash">{p.text}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+
+    <div class="reveal mt-24 flex flex-wrap items-center gap-3">
+      <a href={`mailto:${profile.email}?subject=${encodeURIComponent('Nei.10X enquiry')}`} class="pill pill-inverse">Start a conversation ↗</a>
+      <a href={profile.links.linkedin} class="pill pill-inverse" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+  </div>
+</section>

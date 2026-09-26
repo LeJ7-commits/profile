@@ -1,0 +1,37 @@
+---
+import { profile } from '../data/profile';
+const year = new Date().getFullYear();
+---
+
+<footer id="contact" data-band="light" class="border-t border-hairline pt-24 pb-10 md:pt-38">
+  <div class="page">
+    <p class="eyebrow reveal text-felt mb-8">05 — Contact</p>
+    <a href={`mailto:${profile.email}`} class="reveal block text-heading-lg font-normal tracking-[-0.04em] link-quiet break-words" style="--i:1">
+      Let’s talk data.
+    </a>
+
+    <div class="mt-24 grid gap-10 sm:grid-cols-3 text-micro text-felt">
+      <address class="not-italic flex flex-col gap-2">
+        <span class="text-obsidian">{profile.name}</span>
+        <span>{profile.role}, {profile.employer}</span>
+        <span>Founder, {profile.consultancy}</span>
+      </address>
+      <div class="flex flex-col gap-2">
+        <span class="text-obsidian">Elsewhere</span>
+        <a class="link-quiet" href={`mailto:${profile.email}`}>{profile.email}</a>
+        <a class="link-quiet" href={profile.links.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+        <a class="link-quiet" href={profile.links.github} target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <div class="flex flex-col gap-2">
+        <span class="text-obsidian">Based in</span>
+        <span>{profile.location}</span>
+        <span>Working across the Nordics & remote</span>
+      </div>
+    </div>
+
+    <p class="mt-24 flex justify-between text-micro text-felt">
+      <span>© {year} {profile.name}</span>
+      <a href="#top" class="link-quiet">Back to top ↑</a>
+    </p>
+  </div>
+</footer>

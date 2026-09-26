@@ -1,0 +1,16 @@
+---
+// Rotating circular type — the system's only typographic ornament.
+const text = 'SCROLL DOWN · DATA · PIPELINES · AGENTS ·';
+---
+
+<a href="#about" class="group block size-24 sm:size-28" aria-label="Scroll to introduction">
+  <svg viewBox="0 0 100 100" class="size-full animate-[spin_18s_linear_infinite] fill-current" aria-hidden="true">
+    <defs>
+      <path id="badge-circle" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0" />
+    </defs>
+    <text font-size="7.4">
+      <textPath href="#badge-circle" textLength="236" lengthAdjust="spacing">{text}</textPath>
+    </text>
+  </svg>
+  <span class="absolute inset-0 grid place-items-center text-body-sm transition-transform duration-[var(--duration-glide)] ease-[var(--ease-glide)] group-hover:translate-y-1" aria-hidden="true">↓</span>
+</a>

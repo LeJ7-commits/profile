@@ -1,0 +1,41 @@
+---
+import { profile } from '../data/profile';
+const items = [
+  { href: '#work', label: 'Work' },
+  { href: '#experience', label: 'Experience' },
+  { href: '#nei10x', label: 'Nei.10X' },
+  { href: '#contact', label: 'Contact' },
+];
+---
+
+<header id="nav" class="fixed inset-x-0 top-0 z-40 h-[var(--nav-height)] text-paper transition-colors duration-[var(--duration-quick)]" data-surface="dark">
+  <nav class="page flex h-full items-center justify-between gap-6" aria-label="Primary">
+    <a href="#top" class="text-body-sm link-quiet">{profile.shortName}</a>
+    <span class="eyebrow hidden md:block opacity-80">{profile.location} · 59.33° N</span>
+    <ul class="flex items-center gap-5 sm:gap-7">
+      {items.map((i) => (
+        <li><a href={i.href} class="eyebrow link-quiet">{i.label}</a></li>
+      ))}
+    </ul>
+  </nav>
+</header>
+
+<script>
+  // The header has no fill; it only swaps ink colour depending on the band beneath it.
+  const nav = document.getElementById('nav')!;
+  const bands = document.querySelectorAll<HTMLElement>('[data-band]');
+  const check = () => {
+    const y = nav.offsetHeight / 2;
+    let dark = false;
+    bands.forEach((b) => {
+      const r = b.getBoundingClientRect();
+      if (r.top <= y && r.bottom >= y) dark = b.dataset.band === 'dark';
+    });
+    nav.classList.toggle('text-paper', dark);
+    nav.classList.toggle('text-obsidian', !dark);
+    nav.classList.toggle('backdrop-blur-md', !dark && window.scrollY > 10);
+  };
+  check();
+  window.addEventListener('scroll', check, { passive: true });
+  window.addEventListener('resize', check);
+</script>
