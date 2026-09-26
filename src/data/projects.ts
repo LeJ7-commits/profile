@@ -18,13 +18,12 @@ export const featured: Project[] = [
   {
     slug: 'upv',
     title: 'Unified Probabilistic Validation',
-    kicker: 'Model governance · Master’s thesis with Energy Quant Solutions & EnBW',
+    kicker: 'Master’s thesis · Energy Quant Solutions & EnBW',
     summary:
-      'One reliability framework that validates Monte Carlo, short-term and long-term renewable energy models in a shared probabilistic space, and returns a single GREEN / YELLOW / RED governance decision per dataset.',
+      'One framework that checks three kinds of energy-market model and gives a GREEN, YELLOW or RED call per dataset.',
     points: [
-      'Data contract → adapters → diagnostics (PIT, CRPS, pinball, Basel-style interval backtests) → regime-aware thresholds → decision engine.',
-      'Found that a solar model passing coverage-only checks (91.4%) was structurally miscalibrated — a failure a coverage-only regulator would miss.',
-      'AI-generated technical and plain-language report cards via the Anthropic API; live Streamlit app.',
+      'Flagged a solar model that passed coverage checks (91.4%) but was miscalibrated.',
+      'AI-written report cards and a live Streamlit demo.',
     ],
     flow: ['DataContract', 'Adapters', 'Diagnostics', 'RegimeTagger', 'DecisionEngine', 'ReportCard'],
     stack: ['Python', 'pytest', 'Streamlit', 'Anthropic API'],
@@ -35,13 +34,11 @@ export const featured: Project[] = [
   {
     slug: 'lakehouse',
     title: 'Streaming Lakehouse',
-    kicker: 'Near real-time ingestion · AWS S3 + Databricks',
-    summary:
-      'Clickstream pipeline on a Bronze / Silver / Gold medallion architecture with exactly-once guarantees and a versioned data contract.',
+    kicker: 'Near-real-time ingestion · AWS S3 + Databricks',
+    summary: 'Near-real-time clickstream on Databricks, Bronze to Gold, with exactly-once processing.',
     points: [
-      'Micro-batch Structured Streaming from S3 into Delta Lake with checkpointed, replay-safe restarts.',
-      'Event-time watermarking, stateful deduplication on event_id, and quarantine routing for schema-violating events.',
-      'Versioned JSON-Schema contract; explicit schemas at read time so drift is caught, never silently ignored.',
+      'Watermarking, dedup on event_id, and a quarantine table for bad events.',
+      'A versioned JSON-Schema contract, so schema drift fails loudly.',
     ],
     flow: ['Producer', 'S3 landing', 'Bronze', 'Silver', 'Gold'],
     stack: ['Databricks', 'Delta Lake', 'PySpark', 'AWS S3', 'Terraform'],
@@ -52,12 +49,10 @@ export const featured: Project[] = [
     slug: 'vertex',
     title: 'Vertex ML Demand Forecasting',
     kicker: 'MLOps · Google Cloud',
-    summary:
-      'Production-style forecasting system with conformal prediction intervals, from BigQuery features to a monitored online endpoint.',
+    summary: 'Demand forecasts on Vertex AI, from BigQuery features to a monitored endpoint, with conformal intervals.',
     points: [
-      'Reproducible Vertex AI Pipeline (KFP): feature engineering, LightGBM training, conformal calibration, model registry, endpoint.',
-      'Prediction logging and daily feature-drift checks with an operational runbook.',
-      'Infrastructure in Terraform, CI on GitHub Actions, explicit cost controls.',
+      'A reproducible KFP pipeline covering training, calibration, registry and deployment.',
+      'Drift checks, prediction logging and Terraform-managed infrastructure.',
     ],
     flow: ['BigQuery', 'Features', 'Vertex training', 'Conformal', 'Registry', 'Endpoint'],
     stack: ['Vertex AI', 'BigQuery', 'LightGBM', 'Terraform', 'Cloud Build'],
@@ -68,11 +63,10 @@ export const featured: Project[] = [
     slug: 'elt',
     title: 'Open-Source ELT Stack',
     kicker: 'Modern data stack · Airflow + Meltano + dbt',
-    summary:
-      'A containerised daily inventory pipeline wiring Singer extract-load, dbt transformations and Airflow orchestration into Postgres.',
+    summary: 'A daily Postgres pipeline, with Meltano for extract-load, dbt for transforms and Airflow on top.',
     points: [
-      'Meltano tap-csv → target-postgres, then dbt build, orchestrated as an Airflow TaskFlow DAG with retries and failure alerting.',
-      'One-command local environment via Docker Compose with a health-checked warehouse.',
+      'An Airflow DAG with retries and failure alerts.',
+      'The whole stack starts with one Docker Compose command.',
     ],
     flow: ['CSV sources', 'Meltano', 'Postgres', 'dbt build', 'Airflow'],
     stack: ['Airflow', 'Meltano', 'dbt', 'PostgreSQL', 'Docker'],
@@ -82,12 +76,8 @@ export const featured: Project[] = [
     slug: 'daun',
     title: 'Daun',
     kicker: 'AI FinOps · Hackathon build',
-    summary:
-      'Carbon- and cost-aware AI prompting. A Chrome extension and web calculator that turn every prompt into tokens, API cost, energy and CO₂ — live, where you type.',
-    points: [
-      'Manifest V3 extension injecting a live HUD into ChatGPT, Claude and Gemini.',
-      'Usage telemetry into Supabase powering per-user AI FinOps dashboards.',
-    ],
+    summary: 'A Chrome extension that shows a prompt’s tokens, cost, energy and CO₂ while you type.',
+    points: ['Works inside ChatGPT, Claude and Gemini.', 'Usage feeds per-user AI cost dashboards.'],
     flow: ['Prompt', 'Tokens', 'API cost', 'Energy', 'CO₂'],
     stack: ['TypeScript', 'React', 'Supabase', 'Manifest V3'],
     repo: gh('daun'),

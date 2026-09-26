@@ -57,7 +57,8 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    padding: 11px 33px;
+    /* 12px + 18.4px line + 12px + 2px border ≈ 44px: comfortable touch target */
+    padding: 12px 33px;
     border: 1px solid currentColor;
     border-radius: var(--radius-buttons);
     font-size: var(--text-body-sm);

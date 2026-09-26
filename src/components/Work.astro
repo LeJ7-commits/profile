@@ -7,7 +7,7 @@ import AuroraWash from './AuroraWash.astro';
 <section id="work" data-band="light" class="relative isolate overflow-clip pb-24 md:pb-38">
   <AuroraWash class="left-[-12%] top-[120px] h-[300px] w-[55%]" />
   <div class="page">
-    <SectionHead index="01" label="Selected work" title="Proof, in public repositories." />
+    <SectionHead index="01" label="Selected work" title="Featured projects." />
 
     <!-- On wide screens the cards pin and stack as you scroll (src/scripts/motion.ts). -->
     <ol class="flex flex-col" data-stack>
@@ -39,7 +39,7 @@ import AuroraWash from './AuroraWash.astro';
               <p class="mt-5 text-body-sm text-inkstone max-w-[60ch]">{p.summary}</p>
               <ul class="mt-5 flex flex-col gap-2 text-body-sm text-inkstone max-w-[64ch]">
                 {p.points.map((pt) => (
-                  <li class="grid grid-cols-[20px_1fr]"><span class="text-felt">—</span><span>{pt}</span></li>
+                  <li class="grid grid-cols-[20px_1fr]"><span class="text-felt">·</span><span>{pt}</span></li>
                 ))}
               </ul>
               <ul class="mt-6 flex flex-wrap gap-2" aria-label="Stack">
