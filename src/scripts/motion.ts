@@ -66,7 +66,8 @@ function initCounters() {
   const els = document.querySelectorAll<HTMLElement>('[data-count-to]');
   const easeOutExpo = (t: number) => (t === 1 ? 1 : 1 - 2 ** (-10 * t));
   const render = (el: HTMLElement, v: number) => {
-    el.textContent = `${el.dataset.countPre ?? ''}${Math.round(v)}${el.dataset.countPost ?? ''}`;
+    const d = Number(el.dataset.countDecimals ?? 0);
+    el.textContent = `${el.dataset.countPre ?? ''}${v.toFixed(d)}${el.dataset.countPost ?? ''}`;
   };
   const io = new IntersectionObserver(
     (entries) => {

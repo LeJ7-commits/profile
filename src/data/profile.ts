@@ -23,13 +23,13 @@ export const profile = {
  * `count` drives the count-up animation; `value` is the final, static text.
  */
 export const metrics = [
-  { value: '892M', count: { to: 892, post: 'M' }, unit: 'rows', label: 'watched by the DQ platform I built at Viaplay' },
-  { value: '0→61', count: { pre: '0→', to: 61 }, unit: 'tables', label: 'under automated checks in my first six weeks' },
-  { value: '17×', count: { to: 17, post: '×' }, unit: 'faster', label: 'daily attribution query, 5 min to 17.7 s' },
-  { value: '400+→<10', count: { pre: '400+→<', from: 400, to: 10 }, unit: 'per month', label: 'critical data errors a month at Boston Scientific' },
+  { value: '62.5%', count: { to: 62.5, post: '%', decimals: 1 }, unit: 'lower', label: 'projected database cost after the PostgreSQL v2 cutover' },
+  { value: '94%', count: { to: 94, post: '%' }, unit: 'faster', label: 'daily attribution query after moving legacy feeds onto dbt' },
+  { value: '41%', count: { to: 41, post: '%' }, unit: 'lower', label: 'forecast error on Nordic ad-inventory forecasts' },
+  { value: '97%', count: { to: 97, post: '%' }, unit: 'fewer', label: 'critical data errors a month at Boston Scientific' },
 ] as const satisfies ReadonlyArray<{
   value: string;
-  count: { pre?: string; post?: string; from?: number; to: number };
+  count: { pre?: string; post?: string; from?: number; to: number; decimals?: number };
   unit: string;
   label: string;
 }>;
