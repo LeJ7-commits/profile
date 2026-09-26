@@ -4,14 +4,13 @@ export const profile = {
   role: 'Data Engineer',
   employer: 'Viaplay',
   location: 'Stockholm, Sweden',
-  consultancy: 'Nei.10X',
   email: 'jiayangle@gmail.com',
   links: {
     linkedin: 'https://www.linkedin.com/in/jiayangle/',
     github: 'https://github.com/LeJ7-commits',
   },
   description:
-    'Jay Jiayang Le — data engineer in Stockholm building data-quality platforms, dbt/Airflow pipelines and AI agents on production data. Founder of Nei.10X.',
+    'Jay Jiayang Le — data engineer in Stockholm building data-quality platforms, dbt/Airflow pipelines and AI agents on production data.',
   manifesto:
     'I build data platforms that notice what’s wrong before anyone downstream does.',
   summary:
@@ -39,7 +38,7 @@ export const stack = [
   { group: 'Orchestration & modelling', items: ['Airflow', 'dbt', 'Meltano', 'Dimensional modelling', 'Data contracts'] },
   { group: 'Cloud', items: ['AWS — S3, Redshift, Glue, Lambda, Step Functions', 'Azure — Data Factory, Blob, SQL', 'GCP — BigQuery, Vertex AI'] },
   { group: 'Lakehouse & streaming', items: ['Databricks', 'Delta Lake', 'Structured Streaming', 'PySpark'] },
-  { group: 'AI engineering', items: ['MCP servers', 'AI SDK agents', 'Anthropic / OpenAI APIs', 'LLM classification'] },
+  { group: 'AI engineering', items: ['MCP servers', 'AI SDK agents', 'LangGraph', 'LLM classification'] },
   { group: 'Infrastructure', items: ['Terraform', 'Docker', 'GitHub Actions', 'Git / GitLab'] },
 ] as const;
 

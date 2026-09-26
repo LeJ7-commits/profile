@@ -30,7 +30,7 @@ Tokens live in two places, kept in sync by hand:
 | Reference | Here | Why |
 |-----------|------|-----|
 | Iridescent sage → amber → oxblood | **Aurora:** green `#7cf2c5` → glacier blue `#5ab8ff` → violet `#8b5cf6` → night indigo `#140b3a` | Personal grade. Nordic aurora over a Stockholm night, and it reads as "data in motion" rather than "creative agency". |
-| One chromatic gesture per page (hero only) | **Aurora everywhere, subtle:** the live shader in the hero and, dimmed 78%, behind the Nei.10X band; soft drifting washes (`AuroraWash`, `--aurora-wash-opacity: 0.2`) behind headings, metrics and contact; aurora dots in the stack marquee | Jay's call: carry the motion through the page while keeping all text and controls monochrome. |
+| One chromatic gesture per page (hero only) | **Aurora everywhere, subtle:** the live shader in the hero and, dimmed 78%, behind the Experience band; soft drifting washes (`AuroraWash`, `--aurora-wash-opacity: 0.2`) behind the light sections' headings, metrics and contact; aurora dots in the stack marquee | Jay's call: carry the motion through the page while keeping all text and controls monochrome. |
 | Video / canvas media | A small WebGL shader (`src/scripts/aurora.ts`) that reads the `--aurora-*` tokens | About 3 KB instead of a video. Pauses when off-screen, holds a still frame under reduced motion, and falls back to a CSS gradient without WebGL. |
 | Roobert | Inter Variable (self-hosted via Fontsource) | Roobert is a commercial licence; Inter is the documented substitute. Put Roobert first in `--font-sans` if you license it. |
 | Fixed px type scale | Fluid `clamp()` down to phone sizes | The 225px display has to survive at 390px wide. |
@@ -45,14 +45,14 @@ final and readable without JavaScript, and `prefers-reduced-motion` turns all of
 
 | Effect | Where | How |
 |--------|-------|-----|
-| Live aurora | Hero; Nei.10X (dimmed) | `AuroraCanvas.astro` → WebGL shader reading `--aurora-*` tokens; pauses when off-screen |
-| Drifting wash | About, metrics, Work, Experience, Toolkit, Contact | `AuroraWash.astro`: three blurred token-coloured blobs, transform-only keyframes |
-| Word rise | Hero name, section titles, Nei.10X title and tagline, contact CTA | `SplitText mode="rise"`: words are split at build time and slide up from a mask, staggered 55ms |
+| Live aurora | Hero; Experience (dimmed) | `AuroraCanvas.astro` → WebGL shader reading `--aurora-*` tokens; pauses when off-screen |
+| Drifting wash | About, metrics, Work, Toolkit, Contact | `AuroraWash.astro`: three blurred token-coloured blobs, transform-only keyframes |
+| Word rise | Hero name, section titles, current employer, contact CTA | `SplitText mode="rise"`: words are split at build time and slide up from a mask, staggered 55ms |
 | Word scrub | About manifesto | `SplitText mode="scrub"`: words brighten from 16% to full ink with scroll progress |
 | Count-up | Headline metrics | `data-count-*` attributes with an ease-out-expo tween over 1.8s; tabular figures prevent layout shift |
 | Stacking cards | Selected work (≥1024px) | Sticky cards offset 14px each; covered cards scale to 95% and fade. Turns itself off if a card is taller than the viewport |
 | Magnetic pills | All pill buttons (fine pointers only) | Buttons move up to 6px toward the cursor, easing back with `--ease-glide` |
-| Marquee | Between Experience and Nei.10X | Two copies of the list scroll with a linear 60s loop; pauses on hover |
+| Marquee | Between Experience and Toolkit | Two copies of the list scroll with a linear 60s loop; pauses on hover |
 
 Why not a component library (e.g. Skiper UI): those components are React + Framer Motion, and
 most are paid. These effects cost a few KB of plain script and follow the design tokens directly.

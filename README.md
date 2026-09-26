@@ -1,6 +1,6 @@
 # jay-le-portfolio
 
-Personal site of **Jay Jiayang Le**, data engineer at Viaplay and founder of **Nei.10X**.
+Personal site of **Jay Jiayang Le**, data engineer at Viaplay.
 
 Built with Astro and Tailwind CSS v4, on a token-driven design system
 (see [`design/DESIGN.md`](design/DESIGN.md)).
@@ -14,7 +14,6 @@ All copy lives in typed data files. There's no need to touch the components.
 | `src/data/profile.ts` | Name, links, manifesto, headline metrics, stack, certifications, education |
 | `src/data/experience.ts` | Roles and themed highlights |
 | `src/data/projects.ts` | Featured case studies (and the pipeline shown on each cover), "Also built" list |
-| `src/data/services.ts` | Nei.10X pitch, services, engagement process |
 
 `npm run build` type-checks these, so a missing field fails the build rather than the page.
 
@@ -34,7 +33,7 @@ Requires Node 22.12 or later.
 `.github/workflows/deploy.yml` builds and publishes to GitHub Pages on every push to `main`.
 One-time setup: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
 
-### Custom domain (e.g. `nei10x.com`)
+### Custom domain
 
 1. Buy the domain. At-cost registrars such as Cloudflare or Porkbun charge about $10–15 a year; it renews annually.
 2. Add DNS records: four `A` records to GitHub Pages' IPs (185.199.108–111.153) for the apex, or a `CNAME` to `lej7-commits.github.io` for a subdomain.
