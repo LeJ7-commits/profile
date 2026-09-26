@@ -1,0 +1,31 @@
+---
+/**
+ * Live WebGL aurora (see src/scripts/aurora.ts) with a CSS fallback.
+ * Place inside a `relative isolate` container. `dim` darkens it with an
+ * obsidian veil so it can sit behind long-form text.
+ */
+interface Props {
+  dim?: number; // 0–1 opacity of the obsidian veil
+}
+const { dim = 0 } = Astro.props;
+---
+
+<div class="aurora-fallback absolute inset-0 -z-20" aria-hidden="true"></div>
+<canvas data-aurora class="absolute inset-0 -z-10 size-full opacity-0 transition-opacity duration-[var(--duration-slow)] data-[ready=true]:opacity-100" aria-hidden="true"></canvas>
+{dim > 0 && <div class="absolute inset-0 -z-10 bg-obsidian" style={`opacity:${dim}`} aria-hidden="true"></div>}
+
+<style>
+  .aurora-fallback {
+    background:
+      radial-gradient(60% 55% at 78% 30%, var(--aurora-1) 0%, transparent 60%),
+      radial-gradient(55% 60% at 55% 55%, var(--aurora-2) 0%, transparent 65%),
+      radial-gradient(70% 70% at 30% 70%, var(--aurora-3) 0%, transparent 70%),
+      var(--aurora-4);
+    filter: saturate(1.1) blur(20px);
+  }
+</style>
+
+<script>
+  import { mountAurora } from '../scripts/aurora';
+  document.querySelectorAll<HTMLCanvasElement>('canvas[data-aurora]').forEach(mountAurora);
+</script>

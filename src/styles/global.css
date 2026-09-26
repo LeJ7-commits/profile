@@ -112,7 +112,11 @@
   }
 }
 
-/* Scroll reveal: only hides content once JS has confirmed it can reveal it. */
+/* ── Motion (driven by src/scripts/motion.ts) ─────────────────────────────
+ * Everything below only hides or offsets content under html.js, so the page
+ * is complete without JS, and the reduced-motion block restores final state. */
+
+/* Block reveal */
 html.js .reveal {
   opacity: 0;
   transform: translate3d(0, 28px, 0);
@@ -126,14 +130,90 @@ html.js .reveal.is-in {
   transform: none;
 }
 
+/* Word rise: each word slides up out of its own mask */
+.split .w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  /* room for descenders under tight display line-heights */
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+.split .wi {
+  display: inline-block;
+}
+html.js [data-split='rise'] .wi {
+  transform: translate3d(0, 110%, 0) rotate(4deg);
+  transform-origin: left bottom;
+  transition: transform var(--duration-slow) var(--ease-glide);
+  transition-delay: calc((var(--wd, 0) + var(--wi, 0)) * 55ms);
+}
+html.js [data-split='rise'].is-in .wi {
+  transform: none;
+}
+
+/* Word scrub: muted → full ink as --lit goes 0 → 1 */
+[data-split='scrub'].is-scrubbing .wi {
+  opacity: calc(0.16 + var(--lit, 0) * 0.84);
+  transition: opacity var(--duration-quick) ease;
+}
+
+/* Counters never shift layout while ticking */
+[data-count-to] {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Magnetic pills */
+.pill.is-magnetic {
+  transform: translate3d(var(--mx, 0px), var(--my, 0px), 0);
+  transition:
+    transform var(--duration-glide) var(--ease-glide),
+    letter-spacing var(--duration-glide) var(--ease-glide),
+    border-color var(--duration-glide) var(--ease-glide);
+}
+
+/* Stacking project cards (desktop, only when every card fits the viewport) */
+[data-stack].is-stacking [data-stack-card] {
+  position: sticky;
+  top: calc(var(--nav-height) + var(--si, 0) * 14px);
+  background: var(--color-paper);
+}
+/* The first card is never covering anything, so let the section's wash show through. */
+[data-stack].is-stacking [data-stack-card]:first-child {
+  background: transparent;
+}
+[data-stack].is-stacking [data-stack-card] > * {
+  transform: scale(calc(1 - var(--covered, 0) * 0.05));
+  opacity: calc(1 - var(--covered, 0) * 0.55);
+  transform-origin: 50% 0;
+  will-change: transform, opacity;
+}
+
+/* Marquee */
+.marquee-track {
+  animation: marquee 60s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  html.js .reveal {
+  html.js .reveal,
+  html.js [data-split='rise'] .wi {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+  .marquee-track {
+    animation: none;
   }
   *,
   *::before,

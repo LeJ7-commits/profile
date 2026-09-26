@@ -1,0 +1,35 @@
+---
+import { stack } from '../data/profile';
+
+// Flatten the toolkit into short names for a slow, whisper-weight ticker.
+const items = [
+  'Airflow', 'dbt', 'Databricks', 'Delta Lake', 'PostgreSQL', 'AWS', 'Azure', 'BigQuery',
+  'Vertex AI', 'Terraform', 'Docker', 'MCP', 'PySpark', 'Meltano', 'Python', 'SQL',
+];
+// Keep the list honest: every ticker item must appear somewhere in the stack data.
+const flat = stack.flatMap((g) => g.items).join(' ');
+const missing = items.filter((i) => !flat.includes(i));
+if (missing.length) throw new Error(`Marquee items not in stack data: ${missing.join(', ')}`);
+---
+
+<div class="marquee relative overflow-hidden border-y border-hairline py-10 md:py-12" aria-label="Toolkit">
+  <div class="marquee-track flex w-max">
+    {[0, 1].map((copy) => (
+      <ul class="flex shrink-0 items-center" aria-hidden={copy === 1 ? 'true' : undefined}>
+        {items.map((item) => (
+          <li class="flex items-center text-heading-sm font-light tracking-[-0.02em] whitespace-nowrap">
+            <span class="px-8 md:px-10">{item}</span>
+            <span class="dot size-3 rounded-pill" aria-hidden="true"></span>
+          </li>
+        ))}
+      </ul>
+    ))}
+  </div>
+</div>
+
+<style>
+  /* The ticker's only colour: tiny aurora gradient dots between items. */
+  .dot {
+    background: var(--gradient-aurora);
+  }
+</style>

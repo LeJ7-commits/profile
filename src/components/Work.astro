@@ -1,48 +1,51 @@
 ---
 import { featured, alsoBuilt } from '../data/projects';
 import SectionHead from './SectionHead.astro';
+import AuroraWash from './AuroraWash.astro';
 ---
 
-<section id="work" data-band="light" class="pb-24 md:pb-38">
+<section id="work" data-band="light" class="relative isolate overflow-clip pb-24 md:pb-38">
+  <AuroraWash class="left-[-12%] top-[120px] h-[300px] w-[55%]" />
   <div class="page">
     <SectionHead index="01" label="Selected work" title="Proof, in public repositories." />
 
-    <ol class="flex flex-col">
+    <!-- On wide screens the cards pin and stack as you scroll (src/scripts/motion.ts). -->
+    <ol class="flex flex-col" data-stack>
       {featured.map((p, i) => (
-        <li class="reveal border-t border-hairline py-12 md:py-16">
-          <article class="grid gap-10 md:grid-cols-[180px_1fr] md:gap-10">
-            <p class="eyebrow text-felt">{String(i + 1).padStart(2, '0')}</p>
-            <div>
-              <!-- Monochrome "cover": the system's pipeline, typeset. -->
-              <div class="relative mb-10 overflow-hidden bg-obsidian text-paper px-6 py-10 sm:px-[var(--card-padding)] sm:py-14" aria-hidden="true">
-                <ol class="flex flex-wrap items-center gap-x-3 gap-y-3 font-mono text-caption sm:text-body-sm">
-                  {p.flow.map((step, j) => (
-                    <>
-                      <li class="tag tag-inverse font-mono">{step}</li>
-                      {j < p.flow.length - 1 && <li class="text-ash">→</li>}
-                    </>
-                  ))}
-                </ol>
-                {p.stat && (
-                  <p class="mt-12 flex items-baseline gap-4">
-                    <span class="text-heading-sm tracking-[-0.03em]">{p.stat.value}</span>
-                    <span class="eyebrow text-ash">{p.stat.label}</span>
-                  </p>
-                )}
-              </div>
+        <li data-stack-card style={`--si:${i}`} class="border-t border-hairline">
+          <article class="reveal grid gap-8 py-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-12 lg:py-12">
+            <!-- Monochrome "cover": the system's pipeline, typeset. -->
+            <div class="flex flex-col justify-between gap-10 bg-obsidian text-paper px-6 py-8 sm:px-[var(--card-padding)] sm:py-10" aria-hidden="true">
+              <p class="eyebrow text-ash">{String(i + 1).padStart(2, '0')} / {String(featured.length).padStart(2, '0')}</p>
+              <ol class="flex flex-wrap items-center gap-x-3 gap-y-3 font-mono text-caption">
+                {p.flow.map((step, j) => (
+                  <>
+                    <li class="tag tag-inverse font-mono">{step}</li>
+                    {j < p.flow.length - 1 && <li class="text-ash">→</li>}
+                  </>
+                ))}
+              </ol>
+              {p.stat ? (
+                <p class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+                  <span class="text-heading-sm tracking-[-0.03em]">{p.stat.value}</span>
+                  <span class="eyebrow text-ash">{p.stat.label}</span>
+                </p>
+              ) : <span />}
+            </div>
 
+            <div>
               <p class="eyebrow text-felt mb-4">{p.kicker}</p>
               <h3 class="text-subheading tracking-[-0.02em]">{p.title}</h3>
-              <p class="mt-6 text-body text-inkstone max-w-[60ch]">{p.summary}</p>
-              <ul class="mt-6 flex flex-col gap-3 text-body-sm text-inkstone max-w-[64ch]">
+              <p class="mt-5 text-body-sm text-inkstone max-w-[60ch]">{p.summary}</p>
+              <ul class="mt-5 flex flex-col gap-2 text-body-sm text-inkstone max-w-[64ch]">
                 {p.points.map((pt) => (
                   <li class="grid grid-cols-[20px_1fr]"><span class="text-felt">—</span><span>{pt}</span></li>
                 ))}
               </ul>
-              <ul class="mt-8 flex flex-wrap gap-2" aria-label="Stack">
+              <ul class="mt-6 flex flex-wrap gap-2" aria-label="Stack">
                 {p.stack.map((s) => <li class="tag">{s}</li>)}
               </ul>
-              <div class="mt-10 flex flex-wrap gap-3">
+              <div class="mt-8 flex flex-wrap gap-3">
                 <a href={p.repo} class="pill" target="_blank" rel="noopener">Repository ↗</a>
                 {p.demo && <a href={p.demo} class="pill" target="_blank" rel="noopener">Live demo ↗</a>}
               </div>

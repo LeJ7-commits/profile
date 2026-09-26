@@ -1,26 +1,40 @@
 ---
 import { profile, metrics } from '../data/profile';
+import SplitText from './SplitText.astro';
+import AuroraWash from './AuroraWash.astro';
 ---
 
-<section id="about" data-band="light" class="py-24 md:py-38">
+<section id="about" data-band="light" class="relative isolate overflow-clip py-24 md:py-38">
+  <AuroraWash class="right-[-15%] top-[8%] h-[560px] w-[75%]" />
   <div class="page">
     <p class="eyebrow reveal mb-10 text-felt">About</p>
-    <h2 class="reveal text-heading font-light tracking-[-0.02em] max-w-[18ch]" style="--i:1">{profile.manifesto}</h2>
+    <SplitText as="h2" mode="scrub" text={profile.manifesto} class="text-heading font-light tracking-[-0.02em] max-w-[18ch]" />
     <div class="mt-16 grid gap-10 md:grid-cols-[180px_1fr] md:gap-10">
       <span class="hidden md:block"></span>
-      <p class="reveal text-lede font-light text-inkstone max-w-[36ch]" style="--i:2">{profile.summary}</p>
+      <p class="reveal text-lede font-light text-inkstone max-w-[36ch]">{profile.summary}</p>
     </div>
 
-    <dl class="mt-24 grid grid-cols-1 border-t border-hairline sm:grid-cols-2 lg:grid-cols-4">
+    <div class="relative isolate mt-24">
+    <AuroraWash class="left-[-10%] top-[-20%] h-[140%] w-[60%]" />
+    <dl class="grid grid-cols-1 border-t border-hairline sm:grid-cols-2 lg:grid-cols-4">
       {metrics.map((m, i) => (
         <div class="reveal flex flex-col gap-4 border-b border-hairline py-8 sm:odd:pr-8 lg:border-b-0 lg:pr-8 lg:[&:not(:first-child)]:pl-8 lg:[&:not(:first-child)]:border-l" style={`--i:${i}`}>
           <dt class="order-2 text-caption text-felt max-w-[26ch]">{m.label}</dt>
           <dd class="order-1">
-            <span class="block text-subheading-lg tracking-[-0.03em] tabular-nums">{m.value}</span>
+            <span class="sr-only">{m.value}</span>
+            <span
+              class="block text-subheading-lg tracking-[-0.03em]"
+              aria-hidden="true"
+              data-count-to={m.count.to}
+              data-count-from={'from' in m.count ? m.count.from : undefined}
+              data-count-pre={'pre' in m.count ? m.count.pre : undefined}
+              data-count-post={'post' in m.count ? m.count.post : undefined}
+            >{m.value}</span>
             <span class="eyebrow text-felt">{m.unit}</span>
           </dd>
         </div>
       ))}
     </dl>
+    </div>
   </div>
 </section>

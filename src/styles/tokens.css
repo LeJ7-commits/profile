@@ -33,6 +33,7 @@
   --aurora-2: rgb(90 184 255);
   --aurora-3: rgb(139 92 246);
   --aurora-4: rgb(20 11 58);
+  --aurora-wash-opacity: 0.2; /* strength of the drifting wash on paper */
   --gradient-aurora: linear-gradient(
     90deg,
     var(--aurora-1),

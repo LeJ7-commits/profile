@@ -1,17 +1,18 @@
 ---
+import SplitText from './SplitText.astro';
+
 interface Props {
   index: string;
   label: string;
   title?: string;
-  inverse?: boolean;
 }
 const { index, label, title } = Astro.props;
 ---
 
-<div class="reveal grid gap-6 md:grid-cols-[180px_1fr] md:gap-10 pb-12 md:pb-16">
-  <p class="eyebrow flex gap-4 pt-3 opacity-70">
+<div class="grid gap-6 md:grid-cols-[180px_1fr] md:gap-10 pb-12 md:pb-16">
+  <p class="reveal eyebrow flex gap-4 pt-3 opacity-70">
     <span>{index}</span><span>{label}</span>
   </p>
-  {title && <h2 class="text-heading font-light tracking-[-0.02em]">{title}</h2>}
+  {title && <SplitText as="h2" text={title} class="text-heading font-light tracking-[-0.02em]" />}
   <slot />
 </div>

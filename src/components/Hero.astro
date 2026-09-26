@@ -1,19 +1,18 @@
 ---
 import { profile } from '../data/profile';
 import ScrollBadge from './ScrollBadge.astro';
+import AuroraCanvas from './AuroraCanvas.astro';
+import SplitText from './SplitText.astro';
 ---
 
 <section id="top" data-band="dark" class="relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-obsidian text-paper">
-  <!-- CSS fallback shows until (or unless) the WebGL aurora is ready. -->
-  <div class="aurora-fallback absolute inset-0 -z-20" aria-hidden="true"></div>
-  <canvas id="aurora" class="absolute inset-0 -z-10 size-full opacity-0 transition-opacity duration-[var(--duration-slow)] data-[ready=true]:opacity-100" aria-hidden="true"></canvas>
+  <AuroraCanvas />
   <div class="absolute inset-0 -z-10 bg-gradient-to-t from-obsidian/45 via-transparent to-obsidian/20" aria-hidden="true"></div>
 
   <div class="page flex flex-1 flex-col justify-end pt-[calc(var(--nav-height)+40px)] pb-10">
     <p class="eyebrow reveal mb-6 opacity-90">{profile.role} at {profile.employer} — Founder, {profile.consultancy}</p>
-    <h1 class="reveal text-display font-normal tracking-[-0.035em]" style="--i:1">
-      <span class="sr-only">{profile.name} — </span>
-      <span aria-hidden="true">Jay Le</span>
+    <h1 class="text-display font-normal tracking-[-0.035em]">
+      <SplitText text="Jay Le" srText={profile.name} delay={2} class="block" />
     </h1>
   </div>
 
@@ -25,20 +24,3 @@ import ScrollBadge from './ScrollBadge.astro';
     </div>
   </div>
 </section>
-
-<style>
-  .aurora-fallback {
-    background:
-      radial-gradient(60% 55% at 78% 30%, var(--aurora-1) 0%, transparent 60%),
-      radial-gradient(55% 60% at 55% 55%, var(--aurora-2) 0%, transparent 65%),
-      radial-gradient(70% 70% at 30% 70%, var(--aurora-3) 0%, transparent 70%),
-      var(--aurora-4);
-    filter: saturate(1.1) blur(20px);
-  }
-</style>
-
-<script>
-  import { mountAurora } from '../scripts/aurora';
-  const canvas = document.getElementById('aurora') as HTMLCanvasElement | null;
-  if (canvas) mountAurora(canvas);
-</script>
