@@ -1,0 +1,125 @@
+/*
+ * Design tokens — adapted from the "monopo saigon" style reference
+ * (design/DESIGN.md, design/tokens.json).
+ *
+ * Declared in a Tailwind v4 `@theme static` block so every token is both
+ * a utility class (bg-obsidian, text-heading, rounded-pill …) and a plain
+ * CSS custom property on :root (var(--color-obsidian) …).
+ *
+ * Interface palette is strictly monochrome. The only chromatic values are
+ * the --aurora-* stops, which exist solely for the hero media backdrop.
+ */
+@theme static {
+  /* Wipe Tailwind's default palette: the UI may only use the tokens below. */
+  --color-*: initial;
+
+  /* ── Colors ─────────────────────────────────────────────── */
+  --color-obsidian: #000000; /* primary text, marks, inverse surfaces   */
+  --color-paper: #ffffff; /* canvas, text on dark                        */
+  --color-inkstone: #181818; /* long-form body copy                      */
+  --color-felt: #6d6d6d; /* muted helper text, captions                  */
+  --color-slate: #636363; /* the one filled neutral surface               */
+  --color-ash: #9a9a9a; /* disabled / low-contrast on dark                */
+  --color-pewter: #808080; /* hover / muted state layers                  */
+  --color-hairline: rgb(0 0 0 / 0.14); /* 1px rules on paper            */
+  --color-hairline-inverse: rgb(255 255 255 / 0.3); /* 1px on obsidian  */
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  /* ── Aurora: personal re-grade of the iridescent hero media ─
+   * Nordic aurora green → glacier blue → violet dusk → night indigo.
+   * Media only. Never used for text, borders or controls.        */
+  --aurora-1: rgb(124 242 197);
+  --aurora-2: rgb(90 184 255);
+  --aurora-3: rgb(139 92 246);
+  --aurora-4: rgb(20 11 58);
+  --gradient-aurora: linear-gradient(
+    90deg,
+    var(--aurora-1),
+    var(--aurora-2) 38%,
+    var(--aurora-3) 70%,
+    var(--aurora-4)
+  );
+
+  /* ── Typography ─────────────────────────────────────────── */
+  /* Roobert is commercial; Inter is the documented substitute. */
+  --font-sans: 'Roobert', 'Inter Variable', 'Inter', ui-sans-serif, system-ui,
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-semibold: 600;
+
+  /* Scale from the reference; large steps fluid-clamp down for phones. */
+  --text-micro: 11px;
+  --text-micro--line-height: 1.36;
+  --text-caption: 12px;
+  --text-caption--line-height: 1.19;
+  --text-body-sm: 16px;
+  --text-body-sm--line-height: 1.5;
+  --text-body: 18px;
+  --text-body--line-height: 1.58;
+  --text-lede: clamp(22px, 2.6vw, 29px);
+  --text-lede--line-height: 1.45;
+  --text-subheading: clamp(28px, 4vw, 39px);
+  --text-subheading--line-height: 1.19;
+  --text-subheading-lg: clamp(32px, 4.6vw, 45px);
+  --text-subheading-lg--line-height: 1.15;
+  --text-heading-sm: clamp(36px, 5.4vw, 54px);
+  --text-heading-sm--line-height: 1.2;
+  --text-heading: clamp(42px, 7.2vw, 78px);
+  --text-heading--line-height: 1.1;
+  --text-heading-lg: clamp(52px, 8.8vw, 94px);
+  --text-heading-lg--line-height: 0.86;
+  --text-display: clamp(84px, 19vw, 225px);
+  --text-display--line-height: 0.9;
+
+  /* ── Spacing: 4px base unit ─────────────────────────────── *
+   * Tailwind multiplies this, so p-2 = 8px, p-3 = 12px, p-7 = 28px,
+   * p-10 = 40px, p-12 = 48px, p-16 = 64px, p-17 = 68px, p-38 = 152px. */
+  --spacing: 4px;
+
+  /* ── Layout ─────────────────────────────────────────────── */
+  --container-page: 1078px;
+
+  /* ── Radius: 0 or pill. Nothing in between. ─────────────── */
+  --radius-*: initial;
+  --radius-none: 0px;
+  --radius-pill: 75px;
+
+  /* ── Motion ─────────────────────────────────────────────── */
+  --ease-glide: cubic-bezier(0.19, 1, 0.22, 1);
+  --duration-quick: 0.4s;
+  --duration-glide: 0.8s;
+  --duration-slow: 1.25s;
+}
+
+/* Named semantic aliases for hand-written CSS. */
+:root {
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-28: 28px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-64: 64px;
+  --space-68: 68px;
+  --space-152: 152px;
+
+  --section-gap: 46px;
+  --card-padding: 34px;
+  --element-gap: 14px;
+  --nav-height: 66px;
+  --gutter: clamp(16px, 4vw, 40px);
+
+  --radius-buttons: var(--radius-pill);
+  --radius-tags: var(--radius-pill);
+  --radius-cards: 0px;
+  --radius-images: 0px;
+  --radius-inputs: 0px;
+
+  --surface-paper: var(--color-paper);
+  --surface-slate: var(--color-slate);
+  --surface-obsidian: var(--color-obsidian);
+  --surface-ash: var(--color-ash);
+}

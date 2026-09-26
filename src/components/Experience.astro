@@ -1,0 +1,39 @@
+---
+import { experience } from '../data/experience';
+import SectionHead from './SectionHead.astro';
+---
+
+<section id="experience" data-band="light" class="pb-24 md:pb-38">
+  <div class="page">
+    <SectionHead index="02" label="Experience" title="Where the numbers come from." />
+
+    {experience.map((r) => (
+      <article class="reveal border-t border-hairline py-12 md:py-16 grid gap-8 md:grid-cols-[180px_1fr] md:gap-10">
+        <div class="flex flex-col gap-2">
+          <p class="eyebrow">{r.period}</p>
+          <p class="eyebrow text-felt">{r.location}</p>
+        </div>
+        <div>
+          <h3 class="text-subheading tracking-[-0.02em]">{r.company}</h3>
+          <p class="mt-2 text-body text-felt">{r.role}</p>
+          {r.intro && <p class="mt-6 text-body text-inkstone max-w-[60ch]">{r.intro}</p>}
+
+          {r.themes.length > 0 && (
+            <div class="mt-10 grid gap-x-10 gap-y-10 lg:grid-cols-2">
+              {r.themes.map((t) => (
+                <div>
+                  <h4 class="eyebrow mb-5 border-b border-hairline pb-3">{t.title}</h4>
+                  <ul class="flex flex-col gap-4 text-body-sm text-inkstone">
+                    {t.points.map((pt) => (
+                      <li class="grid grid-cols-[20px_1fr]"><span class="text-felt">—</span><span>{pt}</span></li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
