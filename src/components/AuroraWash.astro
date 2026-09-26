@@ -1,0 +1,39 @@
+---
+/**
+ * Subtle drifting aurora wash for light sections — three blurred token-coloured
+ * blobs, animated with transforms only. Sits behind content (parent must be
+ * `relative isolate`); never behind small body copy at full strength.
+ */
+interface Props {
+  class?: string;
+}
+const { class: className = 'right-[-10%] top-0 h-[520px] w-[70%]' } = Astro.props;
+---
+
+<div class:list={['aurora-wash pointer-events-none absolute -z-10', className]} aria-hidden="true">
+  <span class="blob b1"></span>
+  <span class="blob b2"></span>
+  <span class="blob b3"></span>
+</div>
+
+<style>
+  .aurora-wash {
+    opacity: var(--aurora-wash-opacity);
+    filter: blur(70px) saturate(1.2);
+  }
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    will-change: transform;
+    animation: drift 26s var(--ease-glide) infinite alternate;
+  }
+  .b1 { inset: 5% 40% 35% 5%; background: var(--aurora-1); }
+  .b2 { inset: 20% 10% 20% 35%; background: var(--aurora-2); animation-duration: 32s; animation-delay: -8s; }
+  .b3 { inset: 45% 25% 0% 20%; background: var(--aurora-3); animation-duration: 38s; animation-delay: -16s; }
+
+  @keyframes drift {
+    0%   { transform: translate3d(0, 0, 0) scale(1); }
+    50%  { transform: translate3d(8%, -6%, 0) scale(1.12); }
+    100% { transform: translate3d(-6%, 8%, 0) scale(0.94); }
+  }
+</style>

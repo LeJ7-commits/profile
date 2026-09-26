@@ -1,16 +1,19 @@
 ---
 import { consultancy, services, process } from '../data/services';
 import { profile } from '../data/profile';
+import AuroraCanvas from './AuroraCanvas.astro';
+import SplitText from './SplitText.astro';
 ---
 
-<section id="nei10x" data-band="dark" class="inverse bg-obsidian text-paper py-24 md:py-38">
+<section id="nei10x" data-band="dark" class="inverse relative isolate overflow-hidden bg-obsidian text-paper py-24 md:py-38">
+  <AuroraCanvas dim={0.78} />
   <div class="page">
-    <div class="reveal grid gap-6 md:grid-cols-[180px_1fr] md:gap-10">
-      <p class="eyebrow flex gap-4 pt-3 opacity-70"><span>03</span><span>Consultancy</span></p>
+    <div class="grid gap-6 md:grid-cols-[180px_1fr] md:gap-10">
+      <p class="reveal eyebrow flex gap-4 pt-3 opacity-70"><span>03</span><span>Consultancy</span></p>
       <div>
-        <h2 class="text-display font-normal leading-[0.8] tracking-[-0.045em]">{consultancy.name}</h2>
-        <p class="mt-10 text-heading font-light tracking-[-0.02em] max-w-[16ch]">{consultancy.tagline}</p>
-        <p class="mt-10 text-lede font-light text-ash max-w-[38ch]">{consultancy.pitch}</p>
+        <SplitText as="h2" text={consultancy.name} class="text-display font-normal leading-[0.8] tracking-[-0.045em]" />
+        <SplitText as="p" text={consultancy.tagline} delay={2} class="mt-10 text-heading font-light tracking-[-0.02em] max-w-[16ch]" />
+        <p class="reveal mt-10 text-lede font-light text-ash max-w-[38ch]">{consultancy.pitch}</p>
       </div>
     </div>
 

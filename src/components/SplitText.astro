@@ -1,0 +1,30 @@
+---
+/**
+ * Splits text into words at build time for two motion modes (src/scripts/motion.ts):
+ *  - "rise":  each word slides up from a mask, staggered, when scrolled into view.
+ *  - "scrub": words brighten from muted to full ink as the reader scrolls past.
+ * Screen readers get the sentence once via an sr-only copy (`srText` overrides it);
+ * without JS the text is static.
+ */
+import type { HTMLTag } from 'astro/types';
+
+interface Props {
+  text: string;
+  as?: HTMLTag;
+  mode?: 'rise' | 'scrub';
+  class?: string;
+  delay?: number; // stagger offset in word-steps, to chain after other elements
+  srText?: string;
+}
+const { text, as: Tag = 'span', mode = 'rise', class: className, delay = 0, srText = text } = Astro.props;
+const words = text.split(/\s+/).filter(Boolean);
+---
+
+<Tag class:list={[className, 'split']} data-split={mode} style={`--wd:${delay}`}>
+  <span class="sr-only">{srText}</span>
+  {words.map((w, i) => (
+    <>
+      <span class="w" aria-hidden="true" style={`--wi:${i}`}><span class="wi">{w}</span></span>{i < words.length - 1 && ' '}
+    </>
+  ))}
+</Tag>

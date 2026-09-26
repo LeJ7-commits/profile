@@ -44,20 +44,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 pill bg-paper">Skip to content</a>
     <slot />
     <script>
-      // Scroll reveal with the design system's glide easing (see global.css).
-      const els = document.querySelectorAll<HTMLElement>('.reveal');
-      const io = new IntersectionObserver(
-        (entries) => {
-          for (const e of entries) {
-            if (e.isIntersecting) {
-              e.target.classList.add('is-in');
-              io.unobserve(e.target);
-            }
-          }
-        },
-        { rootMargin: '0px 0px -8% 0px', threshold: 0.08 },
-      );
-      els.forEach((el) => io.observe(el));
+      import { initMotion } from '../scripts/motion';
+      initMotion();
     </script>
   </body>
 </html>

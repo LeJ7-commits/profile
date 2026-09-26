@@ -18,13 +18,21 @@ export const profile = {
     'Data engineer with production experience across media streaming and med-tech. I own pipelines end to end: ingestion, dimensional models, data-quality monitoring and the AI tooling that lets non-engineers ask questions of the data themselves.',
 };
 
-/** Headline numbers. Every figure is taken from shipped production work. */
+/**
+ * Headline numbers. Every figure is taken from shipped production work.
+ * `count` drives the count-up animation; `value` is the final, static text.
+ */
 export const metrics = [
-  { value: '892M', unit: 'rows', label: 'under automated data-quality watch across core fact tables' },
-  { value: '0→61', unit: 'tables', label: 'monitored by a DQ platform built from scratch in six weeks' },
-  { value: '17×', unit: 'faster', label: 'daily attribution query — ~5 min down to 17.7 s' },
-  { value: '400+→<10', unit: 'per month', label: 'critical data errors, within nine months' },
-] as const;
+  { value: '892M', count: { to: 892, post: 'M' }, unit: 'rows', label: 'under automated data-quality watch across core fact tables' },
+  { value: '0→61', count: { pre: '0→', to: 61 }, unit: 'tables', label: 'monitored by a DQ platform built from scratch in six weeks' },
+  { value: '17×', count: { to: 17, post: '×' }, unit: 'faster', label: 'daily attribution query — ~5 min down to 17.7 s' },
+  { value: '400+→<10', count: { pre: '400+→<', from: 400, to: 10 }, unit: 'per month', label: 'critical data errors, within nine months' },
+] as const satisfies ReadonlyArray<{
+  value: string;
+  count: { pre?: string; post?: string; from?: number; to: number };
+  unit: string;
+  label: string;
+}>;
 
 export const stack = [
   { group: 'Languages', items: ['Python', 'SQL (PostgreSQL, T-SQL)', 'TypeScript', 'R'] },
