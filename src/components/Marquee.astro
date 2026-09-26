@@ -4,7 +4,7 @@ import { stack } from '../data/profile';
 // Flatten the toolkit into short names for a slow, whisper-weight ticker.
 const items = [
   'Airflow', 'dbt', 'Databricks', 'Delta Lake', 'PostgreSQL', 'AWS', 'Azure', 'BigQuery',
-  'Vertex AI', 'Terraform', 'Docker', 'MCP', 'PySpark', 'Meltano', 'Python', 'SQL',
+  'Vertex AI', 'Terraform', 'Docker', 'MCP', 'LangGraph', 'PySpark', 'Meltano', 'Python', 'SQL',
 ];
 // Keep the list honest: every ticker item must appear somewhere in the stack data.
 const flat = stack.flatMap((g) => g.items).join(' ');
