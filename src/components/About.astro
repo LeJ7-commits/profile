@@ -8,7 +8,7 @@ import AuroraWash from './AuroraWash.astro';
   <AuroraWash class="right-[-15%] top-[8%] h-[560px] w-[75%]" />
   <div class="page">
     <p class="eyebrow reveal mb-10 text-felt">About</p>
-    <SplitText as="h2" mode="scrub" text={profile.manifesto} class="text-heading font-light tracking-[-0.02em] max-w-[18ch]" />
+    <SplitText as="h2" text={profile.manifesto} class="text-heading font-light tracking-[-0.02em] max-w-[18ch]" />
     <div class="mt-16 grid gap-10 md:grid-cols-[180px_1fr] md:gap-10">
       <span class="hidden md:block"></span>
       <p class="reveal text-lede font-light text-inkstone max-w-[36ch]">{profile.summary}</p>

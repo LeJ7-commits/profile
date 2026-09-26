@@ -10,7 +10,7 @@ import SplitText from './SplitText.astro';
   <div class="absolute inset-0 -z-10 bg-gradient-to-t from-obsidian/45 via-transparent to-obsidian/20" aria-hidden="true"></div>
 
   <div class="page flex flex-1 flex-col justify-end pt-[calc(var(--nav-height)+40px)] pb-10">
-    <p class="eyebrow reveal mb-6 opacity-90">{profile.role} at {profile.employer} — {profile.location}</p>
+    <p class="eyebrow reveal mb-6 opacity-90">{profile.role} at {profile.employer}, {profile.city}</p>
     <h1 class="text-display font-normal tracking-[-0.035em]">
       <SplitText text="Jay Le" srText={profile.name} delay={2} class="block" />
     </h1>
