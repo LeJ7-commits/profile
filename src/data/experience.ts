@@ -23,13 +23,34 @@ export const experience: Role[] = [
     role: 'Data Engineer',
     period: 'Aug 2026 – present',
     location: 'Stockholm',
-    intro: 'Ad-sales and content data for a Nordic streamer. Highlights from my first six weeks.',
+    intro: 'Ad-sales and content data for a Nordic streamer. What my first seven weeks changed for the business.',
     themes: [
       {
-        title: 'Data quality',
+        title: 'Cost',
         points: [
-          { lead: '0 → 61 tables', text: 'under an Airflow data-quality platform I built, watching ~892M rows.' },
-          { lead: '52 issues caught early:', text: 'anomalies and freshness gaps, including a silent three-week gap.' },
+          { lead: '62.5% lower database cost (projected):', text: 'led the PostgreSQL v2 cutover, 731 tables verified row for row, and right-sized storage.' },
+          { lead: '77% less registry storage', text: 'after a cleanup, cutting a recurring storage bill.' },
+        ],
+      },
+      {
+        title: 'Speed',
+        points: [
+          { lead: '48% and 30% faster', text: 'daily ETL for content-platform and video-performance data; the attribution query is 94% faster.' },
+          { lead: '89% smaller exec report,', text: 'so executive summaries and inventory views load faster.' },
+        ],
+      },
+      {
+        title: 'Revenue accuracy',
+        points: [
+          { lead: '18× and 10× overstatement fixed', text: 'in ad-inventory availability for two partner platforms, now reconciled against stakeholder reporting.' },
+          { lead: '41% lower forecast error', text: 'on a new Nordic ad-inventory forecast combining demand, sell-through and product mapping.' },
+        ],
+      },
+      {
+        title: 'Data quality & automation',
+        points: [
+          { lead: '100% automated data-quality monitoring', text: 'on the core ad-sales tables, catching 52 issues before they reached reporting.' },
+          { lead: 'Manual steps automated:', text: 'a weekly Excel build moved to dbt, and an email-to-FTP ingest step with 100% successful runs.' },
         ],
       },
       {
@@ -39,28 +60,16 @@ export const experience: Role[] = [
           { lead: 'Human-in-the-loop Slack agents', text: 'for platform mapping and franchise classification.' },
         ],
       },
-      {
-        title: 'Pipelines',
-        points: [
-          { lead: '5 min → 17.7 s:', text: 'moved two legacy SQL Server feeds onto dbt after five days of exact parity.' },
-          { lead: '0.0002% drift:', text: 'daily DK/NO/SE completeness export; a weekly Excel job replaced by dbt.' },
-        ],
-      },
-      {
-        title: 'Incidents',
-        points: [
-          { lead: 'Same-day fix', text: 'for a silent upstream ID change that sent a partner’s entire ad volume to “Unknown” for five days.' },
-          { lead: '~39B vs ~6.8M:', text: 'traced an inflated historical total to a grain double-count.' },
-        ],
-      },
     ],
     more: [
-      'The 52 early catches break down as 22 critical row-count anomalies, 16 ad-volume anomalies and 14 freshness gaps.',
-      'The MCP agent sits behind an AST-level SQL validator, a least-privilege DB role and 24-hour thread memory.',
-      'Franchise classifier: pg_trgm matching first, LLM fallback, 44 unit tests and a weekly re-classification DAG.',
-      'Unified four siloed sources into one gold-layer reconciliation view, and built direct-from-source ingestion that removed a legacy SQL Server hop.',
-      'A Graph API email-to-FTP bridge on a 15-minute schedule, with 100% successful runs since go-live.',
-      'Archived 570 partitions (~203 GB) from Postgres to Azure Blob ahead of a retention cutoff, and added self-healing for the Airflow scheduler, API server and DAG processor.',
+      'The PostgreSQL v2 cutover moved ~385 GB with exact row counts across all 731 tables; minute-level ad-delivery telemetry and hourly ad-insights jobs moved from an on-prem server to Airflow at the same switch.',
+      'Inventory forecast accuracy measured out of sample, country by week (wMAPE 45.1% to 26.5%).',
+      'Same-day fix for a silent upstream ID change that had sent 100% of a partner’s ad volume to “Unknown” for five days.',
+      'Traced a grain double-count that inflated a historical total ~5,700× (~39B against a ~6.8M baseline).',
+      'The 52 early catches: 22 critical row-count anomalies, 16 ad-volume anomalies and 14 freshness gaps, across 61 tables and ~892M rows.',
+      'The daily DK/NO/SE completeness export matches source to 99.9998%.',
+      'The MCP agent sits behind an AST-level SQL validator, a least-privilege DB role and 24-hour thread memory; the franchise classifier uses pg_trgm first with an LLM fallback and 44 unit tests.',
+      'Archived ~203 GB of old partitions to Azure Blob ahead of a retention cutoff, and added self-healing for the Airflow scheduler, API server and DAG processor.',
     ],
   },
   {
@@ -81,9 +90,9 @@ export const experience: Role[] = [
       {
         title: 'Outcomes',
         points: [
-          { lead: '400+ → single digits', text: 'critical errors a month, within nine months.' },
-          { lead: '2.5 weeks → 1–2 days', text: 'reporting cycle, at 97% SLA.' },
-          { lead: '1 → 6 people:', text: 'grew the data team and mentored each new analyst.' },
+          { lead: '97% fewer critical data errors', text: 'within nine months, through automated quality checks.' },
+          { lead: '~90% faster reporting cycle', text: '(2.5 weeks to 1–2 days) at 97% SLA.' },
+          { lead: '6× larger data team:', text: 'grew it from one person and mentored each new analyst.' },
         ],
       },
     ],
