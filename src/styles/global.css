@@ -173,23 +173,6 @@ html.js [data-split='rise'].is-in .wi {
     border-color var(--duration-glide) var(--ease-glide);
 }
 
-/* Stacking project cards (desktop, only when every card fits the viewport) */
-[data-stack].is-stacking [data-stack-card] {
-  position: sticky;
-  top: calc(var(--nav-height) + var(--si, 0) * 14px);
-  background: var(--color-paper);
-}
-/* The first card is never covering anything, so let the section's wash show through. */
-[data-stack].is-stacking [data-stack-card]:first-child {
-  background: transparent;
-}
-[data-stack].is-stacking [data-stack-card] > * {
-  transform: scale(calc(1 - var(--covered, 0) * 0.05));
-  opacity: calc(1 - var(--covered, 0) * 0.55);
-  transform-origin: 50% 0;
-  will-change: transform, opacity;
-}
-
 /* Marquee */
 .marquee-track {
   animation: marquee 60s linear infinite;

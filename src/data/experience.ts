@@ -11,6 +11,7 @@ export type Role = {
   themes: Highlight[];
   /** Extra detail, shown behind a "More" disclosure so the default view stays skimmable. */
   more?: string[];
+  links?: { label: string; href: string }[];
 };
 
 /*
@@ -77,8 +78,20 @@ export const experience: Role[] = [
     role: 'Master’s thesis, model validation',
     period: '2026',
     location: 'Lund',
-    intro: 'Built a validation framework for probabilistic energy models, with EnBW Group. Details under Featured projects.',
-    themes: [],
+    intro: 'A validation framework for probabilistic energy-market models, built with EnBW Group. It gives one GREEN, YELLOW or RED call per dataset.',
+    themes: [
+      {
+        title: 'Outcomes',
+        points: [
+          { lead: 'Caught what coverage checks miss:', text: 'a solar model with 91.4% coverage that was still miscalibrated.' },
+          { lead: '451 tests,', text: 'AI-written report cards and a live demo.' },
+        ],
+      },
+    ],
+    links: [
+      { label: 'Repository', href: 'https://github.com/LeJ7-commits/unified-probabilistic-validation' },
+      { label: 'Live demo', href: 'https://unified-probabilistic-validation.streamlit.app' },
+    ],
   },
   {
     company: 'Boston Scientific',

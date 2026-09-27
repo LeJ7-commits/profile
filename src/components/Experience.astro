@@ -9,7 +9,7 @@ import SplitText from './SplitText.astro';
 <section id="experience" data-band="dark" class="inverse relative isolate overflow-hidden bg-obsidian text-paper py-24 md:py-38">
   <AuroraCanvas dim={0.78} />
   <div class="page">
-    <SectionHead index="02" label="Experience" title="Where the numbers come from." />
+    <SectionHead index="01" label="Experience" title="Where the numbers come from." />
 
     {experience.map((r, i) => (
       <article class="reveal border-t border-hairline-inverse py-12 md:py-16 grid gap-8 md:grid-cols-[180px_1fr] md:gap-10">
@@ -40,6 +40,14 @@ import SplitText from './SplitText.astro';
                     ))}
                   </ul>
                 </div>
+              ))}
+            </div>
+          )}
+
+          {r.links && (
+            <div class="mt-8 flex flex-wrap gap-3">
+              {r.links.map((l) => (
+                <a href={l.href} class="pill pill-inverse" target="_blank" rel="noopener">{l.label} ↗</a>
               ))}
             </div>
           )}
