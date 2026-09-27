@@ -34,7 +34,6 @@ Tokens live in two places, kept in sync by hand:
 | Video / canvas media | A small WebGL shader (`src/scripts/aurora.ts`) that reads the `--aurora-*` tokens | About 3 KB instead of a video. Pauses when off-screen, holds a still frame under reduced motion, and falls back to a CSS gradient without WebGL. |
 | Roobert | Inter Variable (self-hosted via Fontsource) | Roobert is a commercial licence; Inter is the documented substitute. Put Roobert first in `--font-sans` if you license it. |
 | Fixed px type scale | Fluid `clamp()` down to phone sizes | The 225px display has to survive at 390px wide. |
-| Project imagery | Typeset pipeline "covers" (`Producer → S3 → Bronze → …`) on obsidian | Data work has no product photos. The architecture is the image. |
 | Language switcher (EN / VN / 中文) | Location marker, `Stockholm · 59.33° N` | Single-language site. |
 
 ## Motion inventory
@@ -46,11 +45,10 @@ final and readable without JavaScript, and `prefers-reduced-motion` turns all of
 | Effect | Where | How |
 |--------|-------|-----|
 | Live aurora | Hero; Experience (dimmed) | `AuroraCanvas.astro` → WebGL shader reading `--aurora-*` tokens; pauses when off-screen |
-| Drifting wash | About, metrics, Work, Toolkit, Contact | `AuroraWash.astro`: three blurred token-coloured blobs, transform-only keyframes |
+| Drifting wash | About, metrics, Toolkit, Contact | `AuroraWash.astro`: three blurred token-coloured blobs, transform-only keyframes |
 | Word rise | Hero name, About manifesto, section titles, current employer, contact CTA | `SplitText mode="rise"`: words are split at build time and slide up from a mask, staggered 55ms |
 | Word scrub | Available, currently unused | `SplitText mode="scrub"`: words brighten with scroll progress. Taken off the manifesto because a faded headline fails a 15-second skim |
 | Count-up | Headline metrics | `data-count-*` attributes with an ease-out-expo tween over 1.8s; tabular figures prevent layout shift |
-| Stacking cards | Selected work (≥1024px) | Sticky cards offset 14px each; covered cards scale to 95% and fade. Turns itself off if a card is taller than the viewport |
 | Magnetic pills | All pill buttons (fine pointers only) | Buttons move up to 6px toward the cursor, easing back with `--ease-glide` |
 | Marquee | Between Experience and Toolkit | Two copies of the list scroll with a linear 60s loop; pauses on hover |
 

@@ -95,42 +95,6 @@ function initCounters() {
   });
 }
 
-/* ── Stack: project cards pin and stack; covered cards recede ─────────── */
-function initStack() {
-  const list = document.querySelector<HTMLElement>('[data-stack]');
-  if (!list) return;
-  const cards = Array.from(list.querySelectorAll<HTMLElement>('[data-stack-card]'));
-  const desktop = window.matchMedia('(min-width: 1024px)');
-
-  const layout = () => {
-    // Only stack when every card fits under the nav with room for the offsets;
-    // otherwise pinned content would be cut off, so fall back to normal flow.
-    list.classList.remove('is-stacking');
-    if (!desktop.matches) return;
-    const nav = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-height')) || 66;
-    const room = window.innerHeight - nav - cards.length * 14 - 16;
-    if (cards.every((c) => c.offsetHeight <= room)) list.classList.add('is-stacking');
-  };
-  layout();
-  window.addEventListener('resize', layout);
-
-  onScroll(() => {
-    const stacking = list.classList.contains('is-stacking');
-    cards.forEach((card, i) => {
-      const next = cards[i + 1];
-      if (!stacking || !next) {
-        card.style.removeProperty('--covered');
-        return;
-      }
-      const top = parseFloat(getComputedStyle(next).top) || 0;
-      const nr = next.getBoundingClientRect();
-      // 0 while the next card is a viewport away; 1 once it has pinned on top.
-      const p = clamp01(1 - (nr.top - top) / (window.innerHeight - top));
-      card.style.setProperty('--covered', p.toFixed(3));
-    });
-  });
-}
-
 /* ── Magnetic pills: buttons lean toward a fine pointer ───────────────── */
 function initMagnetic() {
   if (!window.matchMedia('(pointer: fine)').matches) return;
@@ -158,6 +122,5 @@ export function initMotion() {
   initReveals();
   initScrub();
   initCounters();
-  initStack();
   initMagnetic();
 }

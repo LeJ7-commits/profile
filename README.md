@@ -13,7 +13,6 @@ All copy lives in typed data files. There's no need to touch the components.
 |------|----------|
 | `src/data/profile.ts` | Name, links, manifesto, headline metrics, stack, certifications, education |
 | `src/data/experience.ts` | Roles and themed highlights |
-| `src/data/projects.ts` | Featured case studies (and the pipeline shown on each cover), "Also built" list |
 
 `npm run build` type-checks these, so a missing field fails the build rather than the page.
 
