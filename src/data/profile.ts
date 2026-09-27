@@ -25,7 +25,7 @@ export const profile = {
 export const metrics = [
   { value: '62.5%', count: { to: 62.5, post: '%', decimals: 1 }, unit: 'lower', label: 'projected database cost after the PostgreSQL v2 cutover' },
   { value: '94%', count: { to: 94, post: '%' }, unit: 'faster', label: 'daily attribution query after moving legacy feeds onto dbt' },
-  { value: '41%', count: { to: 41, post: '%' }, unit: 'lower', label: 'forecast error on Nordic ad-inventory forecasts' },
+  { value: '48%', count: { to: 48, post: '%' }, unit: 'faster', label: 'daily content-platform ETL, 96 to ~50 minutes' },
   { value: '97%', count: { to: 97, post: '%' }, unit: 'fewer', label: 'critical data errors a month at Boston Scientific' },
 ] as const satisfies ReadonlyArray<{
   value: string;
