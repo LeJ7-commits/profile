@@ -43,9 +43,14 @@ export const stack = [
   { group: 'Infrastructure', items: ['Terraform', 'Docker', 'GitHub Actions', 'Git / GitLab'] },
 ] as const;
 
-export const certifications = [
-  'AWS Certified Solutions Architect, Associate',
-  'Databricks Certified Data Engineer Associate',
+/** `href` is an optional public verification link (e.g. a Credly badge). */
+export const certifications: { name: string; href?: string }[] = [
+  { name: 'AWS Certified Solutions Architect, Associate' },
+  { name: 'Databricks Certified Data Engineer Associate' },
+  {
+    name: 'Nebius Agentic AI Builder Certification',
+    href: 'https://www.credly.com/badges/03967d4b-00ef-4e4d-8749-53eb02d5650b',
+  },
 ];
 
 export const education = [

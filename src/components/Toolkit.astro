@@ -23,7 +23,17 @@ import AuroraWash from './AuroraWash.astro';
 
     <div class="reveal border-t border-hairline grid gap-10 py-12 md:grid-cols-[180px_1fr] md:gap-10">
       <p class="eyebrow text-felt">Certifications</p>
-      <ul class="flex flex-wrap gap-3">{certifications.map((c) => <li class="tag text-caption">{c}</li>)}</ul>
+      <ul class="flex flex-wrap gap-3">
+        {certifications.map((c) => (
+          <li>
+            {c.href ? (
+              <a href={c.href} target="_blank" rel="noopener" class="tag text-caption link-quiet" aria-label={`${c.name} (verify on Credly)`}>{c.name} ↗</a>
+            ) : (
+              <span class="tag text-caption">{c.name}</span>
+            )}
+          </li>
+        ))}
+      </ul>
     </div>
 
     <div class="reveal border-t border-hairline grid gap-10 py-12 md:grid-cols-[180px_1fr] md:gap-10">
