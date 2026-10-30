@@ -24,12 +24,13 @@ export const experience: Role[] = [
     role: 'Data Engineer',
     period: 'Aug 2026 – present',
     location: 'Stockholm',
-    intro: 'Ad-sales and content data for a Nordic streamer. What my first seven weeks changed for the business.',
+    intro: 'Ad-sales and content data for a Nordic streamer. What I’ve changed for the business so far.',
     themes: [
       {
         title: 'Cost',
         points: [
           { lead: '62.5% lower database cost (projected):', text: 'led the PostgreSQL v2 cutover (~385 GB, 731 tables, exact row counts) and right-sized storage.' },
+          { lead: '~50% lower monthly cost', text: 'for the Airflow container.' },
           { lead: '77% less registry storage', text: 'after a cleanup, cutting a recurring storage bill.' },
         ],
       },
