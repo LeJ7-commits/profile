@@ -82,14 +82,34 @@ export const experience: Role[] = [
     role: 'Data Analyst, data engineering',
     period: 'Aug 2023 – Jul 2025',
     location: 'Southeast Asia',
-    intro: 'I owned the reporting pipelines for six markets and 200+ stakeholders.',
+    intro: 'Two years owning the data infrastructure behind commercial and financial reporting for six markets and 200+ stakeholders.',
     themes: [
       {
-        title: 'Outcomes',
+        title: 'Data quality',
         points: [
-          { lead: '97% fewer critical data errors', text: 'within nine months, through automated quality checks.' },
-          { lead: '~90% faster reporting cycle', text: '(2.5 weeks to 1–2 days) at 97% SLA.' },
-          { lead: '6× larger data team:', text: 'grew it from one person and mentored each new analyst.' },
+          { lead: '97% fewer critical data errors:', text: 'from 400+ a month to single digits within nine months.' },
+          { lead: 'Automated checks and anomaly detection', text: 'on transactional data, plus fixes to existing pipelines that cut manual work.' },
+        ],
+      },
+      {
+        title: 'Speed',
+        points: [
+          { lead: '~90% faster reporting cycle:', text: '2.5 weeks down to 1–\u20602\u00a0days, at 97% SLA.' },
+          { lead: 'Indexing, partition pruning and query tuning', text: 'behind the speed-up.' },
+        ],
+      },
+      {
+        title: 'Platform',
+        points: [
+          { lead: 'Star-schema models in AWS Redshift', text: 'for KPI and financial reporting across six markets.' },
+          { lead: 'PySpark and Glue ETL', text: 'run by Step Functions and Lambda, pulling internal and third-party sources into one pipeline.' },
+        ],
+      },
+      {
+        title: 'Team',
+        points: [
+          { lead: '1 → 6 people:', text: 'grew the data team to six, 6× its starting size.' },
+          { lead: 'Full ownership of the infrastructure,', text: 'onboarding and mentoring each new analyst.' },
         ],
       },
     ],
