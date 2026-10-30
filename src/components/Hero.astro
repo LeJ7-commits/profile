@@ -7,13 +7,14 @@ import SplitText from './SplitText.astro';
 
 <section id="top" data-band="dark" class="relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-obsidian text-paper">
   <AuroraCanvas />
-  <div class="absolute inset-0 -z-10 bg-gradient-to-t from-obsidian/45 via-transparent to-obsidian/20" aria-hidden="true"></div>
+  <!-- Scrim: darkens the top edge so the nav stays readable, the foot so the actions do, and the left so the name and sentence keep contrast as the aurora moves. -->
+  <div class="absolute inset-0 -z-10" style="background: linear-gradient(to bottom, var(--color-veil), transparent 220px), linear-gradient(to top, var(--color-veil), transparent 45%), linear-gradient(to right, var(--color-veil), transparent 65%)" aria-hidden="true"></div>
 
-  <div class="page flex flex-1 flex-col justify-end pt-[calc(var(--nav-height)+40px)] pb-10">
-    <p class="eyebrow reveal mb-6 opacity-90">{profile.role} at {profile.employer}, {profile.city}</p>
+  <div class="page flex flex-1 flex-col justify-end pt-[calc(var(--nav-height)+var(--space-40))] pb-10">
     <h1 class="text-display font-normal tracking-[-0.035em]">
-      <SplitText text="Jay Le" srText={profile.name} delay={2} class="block" />
+      <SplitText text="Jay Le" delay={2} class="block" />
     </h1>
+    <p class="reveal mt-6 max-w-[32ch] text-lede font-light text-paper-soft" style="--i:2">Data engineer at {profile.employer} in {profile.city}, building data platforms and AI agents.</p>
   </div>
 
   <div class="page flex items-end justify-between gap-6 pb-8">

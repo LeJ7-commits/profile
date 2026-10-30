@@ -8,31 +8,30 @@ const year = new Date().getFullYear();
 <footer id="contact" data-band="light" class="relative isolate overflow-clip border-t border-hairline pt-24 pb-10 md:pt-38">
   <AuroraWash class="right-[-10%] top-[10%] h-[480px] w-[65%]" />
   <div class="page">
-    <p class="eyebrow reveal text-felt mb-8">03 Contact</p>
-    <a href={`mailto:${profile.email}`} class="block text-heading-lg font-normal tracking-[-0.04em] link-quiet break-words">
+    <a href={`mailto:${profile.email}`} class="block text-[clamp(2rem,10vw,5.875rem)] leading-[0.9] font-normal tracking-[-0.04em] link-quiet break-words">
       <SplitText text="Let’s talk data." />
     </a>
+    <a href={`mailto:${profile.email}`} class="mt-8 inline-block text-lede font-light link-quiet break-all">{profile.email}</a>
 
-    <div class="mt-24 grid gap-10 sm:grid-cols-3 text-micro text-felt">
+    <div class="mt-24 grid gap-10 sm:grid-cols-3 text-body-sm text-felt">
       <address class="not-italic flex flex-col gap-2">
-        <span class="text-obsidian">{profile.name}</span>
+        <span class="text-obsidian font-semibold">{profile.name}</span>
         <span>{profile.role}, {profile.employer}</span>
       </address>
       <div class="flex flex-col gap-2">
-        <span class="text-obsidian">Elsewhere</span>
-        <a class="link-quiet" href={`mailto:${profile.email}`}>{profile.email}</a>
+        <span class="text-obsidian font-semibold">Elsewhere</span>
         <a class="link-quiet" href={profile.links.linkedin} target="_blank" rel="noopener">LinkedIn</a>
         <a class="link-quiet" href={profile.links.github} target="_blank" rel="noopener">GitHub</a>
       </div>
       <div class="flex flex-col gap-2">
-        <span class="text-obsidian">Based in</span>
+        <span class="text-obsidian font-semibold">Based in</span>
         <span>{profile.location}</span>
       </div>
     </div>
 
-    <p class="mt-24 flex justify-between text-micro text-felt">
+    <p class="mt-24 flex justify-between label text-felt">
       <span>© {year} {profile.name}</span>
-      <a href="#top" class="link-quiet">Back to top ↑</a>
+      <a href="#top" class="link-quiet">Back to top</a>
     </p>
   </div>
 </footer>

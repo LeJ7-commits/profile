@@ -22,23 +22,23 @@ export const experience: Role[] = [
   {
     company: 'Viaplay',
     role: 'Data Engineer',
-    period: 'Aug 2026 – present',
+    period: 'Aug 2026 to present',
     location: 'Stockholm',
-    intro: 'Ad-sales and content data for a Nordic streamer. What I’ve changed for the business so far.',
+    intro: 'Ad-sales and content data for a Nordic streamer.',
     themes: [
       {
         title: 'Cost',
         points: [
           { lead: '62.5% lower database cost (projected):', text: 'led the PostgreSQL v2 cutover (~385 GB, 731 tables, exact row counts) and right-sized storage.' },
           { lead: '~50% lower monthly cost', text: 'for the Airflow container.' },
-          { lead: '77% less registry storage', text: 'after a cleanup, cutting a recurring storage bill.' },
+          { lead: '77% less registry storage', text: 'after a cleanup.' },
         ],
       },
       {
         title: 'Speed',
         points: [
           { lead: '48% and 30% faster', text: 'daily ETL for content-platform and video-performance data; the attribution query is 94% faster.' },
-          { lead: '89% smaller exec report,', text: 'so executive summaries and inventory views load faster.' },
+          { lead: '89% smaller exec report,', text: 'so summaries and inventory views load faster.' },
         ],
       },
       {
@@ -80,7 +80,7 @@ export const experience: Role[] = [
   {
     company: 'Boston Scientific',
     role: 'Data Analyst, data engineering',
-    period: 'Aug 2023 – Jul 2025',
+    period: 'Aug 2023 to Jul 2025',
     location: 'Southeast Asia',
     intro: 'Two years owning the data infrastructure behind commercial and financial reporting for six markets and 200+ stakeholders.',
     themes: [
@@ -94,7 +94,7 @@ export const experience: Role[] = [
       {
         title: 'Speed',
         points: [
-          { lead: '~90% faster reporting cycle:', text: '2.5 weeks down to 1–\u20602\u00a0days, at 97% SLA.' },
+          { lead: '~90% faster reporting cycle:', text: '2.5 weeks became 1 to 2 days, at 97% SLA.' },
           { lead: 'Indexing, partition pruning and query tuning', text: 'behind the speed-up.' },
         ],
       },
@@ -108,7 +108,7 @@ export const experience: Role[] = [
       {
         title: 'Team',
         points: [
-          { lead: '1 → 6 people:', text: 'grew the data team to six, 6× its starting size.' },
+          { lead: '6× larger team:', text: 'grew the data function from one person to six.' },
           { lead: 'Full ownership of the infrastructure,', text: 'onboarding and mentoring each new analyst.' },
         ],
       },

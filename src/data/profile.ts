@@ -15,7 +15,7 @@ export const profile = {
   manifesto:
     'I build data platforms that notice what’s wrong before anyone downstream does.',
   summary:
-    'I work across the whole pipeline: ingestion, dimensional models, data-quality checks, and the AI tools that let non-engineers query data themselves. Right now that’s ad-sales and content data at Viaplay.',
+    'I work across the whole data pipeline, from ingestion and dimensional models to quality checks and the tools that let non-engineers query the data themselves. Right now that is ad-sales and content data at Viaplay.',
 };
 
 /**
@@ -39,23 +39,35 @@ export const stack = [
   { group: 'Orchestration & transformation', items: ['Airflow', 'dbt', 'Meltano'] },
   { group: 'Cloud', items: ['AWS: S3, Redshift, Glue, Lambda, Step Functions', 'Azure: Data Factory, Blob, SQL', 'GCP: BigQuery, Vertex AI'] },
   { group: 'Lakehouse & streaming', items: ['Databricks', 'Delta Lake', 'Structured Streaming', 'PySpark'] },
-  { group: 'AI engineering', items: ['MCP', 'AI SDK', 'LangGraph'] },
+  { group: 'AI engineering', items: ['LangGraph', 'OpenAI SDK', 'Nebius Token Factory', 'Tavily'] },
   { group: 'Infrastructure', items: ['Terraform', 'Docker', 'GitHub Actions', 'Git / GitLab'] },
 ] as const;
 
-/** `href` is an optional public verification link (e.g. a Credly badge). */
-export const certifications: { name: string; href?: string }[] = [
-  { name: 'AWS Certified Solutions Architect, Associate' },
-  { name: 'Databricks Certified Data Engineer Associate' },
+/**
+ * `name` is the official title (read out by screen readers), `label` the short form shown on the page,
+ * `href` the public verification link (a Credly or Databricks credential page).
+ */
+export const certifications: { name: string; label: string; href?: string }[] = [
+  {
+    name: 'AWS Certified Solutions Architect, Associate',
+    label: 'AWS Solutions Architect, Associate',
+    href: 'https://www.credly.com/badges/ca55c3cb-eaa4-4574-beee-2b33da9f7eaf',
+  },
+  {
+    name: 'Databricks Certified Data Engineer Associate',
+    label: 'Databricks Data Engineer Associate',
+    href: 'https://credentials.databricks.com/faaf8260-1d25-4858-84f4-62cd30133b05#acc.JieMIZDL',
+  },
   {
     name: 'Nebius Agentic AI Builder Certification',
+    label: 'Nebius Agentic AI Builder',
     href: 'https://www.credly.com/badges/03967d4b-00ef-4e4d-8749-53eb02d5650b',
   },
 ];
 
 export const education = [
-  { degree: 'MSc Data Analytics & Business Economics', school: 'Lund University, Sweden', years: '2025–2026' },
-  { degree: 'BCom Business Analytics & Applied Economics', school: 'Monash University, Australia', years: '2020–2023' },
+  { degree: 'MSc Data Analytics & Business Economics', school: 'Lund University, Sweden', years: '2025 to 2026' },
+  { degree: 'BCom Business Analytics & Applied Economics', school: 'Monash University, Australia', years: '2020 to 2023' },
 ];
 
 export const languages = ['English', 'Mandarin', 'Cantonese', 'Bahasa', 'Swedish (learning)'];

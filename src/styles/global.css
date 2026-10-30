@@ -1,3 +1,15 @@
+/* Hallmark · checked: 2026-10-30 · genre: editorial (inferred)
+ * floor: 0 FAIL · fixed: 2a, 7b, 15, 20, 24a, 26b, 34, 37, 40, 41, 44d, 49b, 54, 63, 67, F3, F20, F26
+ * structural: printed, not rebuilt (58 screen budget, 59 section gaps, 24b spacing scale)
+ * finish-review: subagent · 5 findings · 3 resolved 1 partial 1 unresolved (blooms kept by request)
+ * built: the project · redesign: polish · v2.0.0 */
+/*! Hallmark · checked: 2026-10-30 · built: the project · redesign: polish · v2.0.0 */
+/* Hallmark · reworded "Where the numbers come from." to "Results at Viaplay and Boston Scientific." · the plain label names what the section holds */
+/* Hallmark · reworded "Stack, credentials, background." to "Stack, certifications and education." · the plain label names what the section holds */
+/* Hallmark · dropped 59.33 · 63 names the dot-joined meta string */
+/* Hallmark · reworded "jay jiayang le jay le" to "jay le" · the visually hidden duplicate made a 1,600px text block (44d) */
+/* Hallmark · reworded "i build data platforms that notice what’s wrong before anyone downstream does. i build data platforms that notice what’s wrong before anyone downstream does." to "i build data platforms that notice what’s wrong before anyone downstream does." · the visually hidden duplicate went with the split-text rework (44d) */
+/* Hallmark · reworded "viaplay viaplay" to "viaplay" · the visually hidden duplicate went with the split-text rework */
 @import 'tailwindcss';
 @import '@fontsource-variable/inter/wght.css';
 @import './tokens.css';
@@ -8,10 +20,12 @@
     color: var(--color-obsidian);
     font-family: var(--font-sans);
     font-feature-settings: 'ss01', 'cv11';
+    font-synthesis: none;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     scroll-behavior: smooth;
     scroll-padding-top: var(--nav-height);
+    overflow-x: clip;
   }
 
   body {
@@ -30,8 +44,24 @@
     text-decoration: none;
   }
 
+  /* Heads wrap evenly and never overflow a narrow screen; body copy avoids stub lines. */
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+    overflow-wrap: break-word;
+    min-width: 0;
+  }
+  p,
+  li,
+  dd {
+    text-wrap: pretty;
+  }
+
+  /* Focus rings appear instantly: no property that transitions touches outline. */
   :focus-visible {
-    outline: 1px solid currentColor;
+    outline: 2px solid currentColor;
     outline-offset: 4px;
   }
 }
@@ -44,34 +74,35 @@
     padding-inline: var(--gutter);
   }
 
-  /* 11px uppercase label used for section indices, nav and metadata. */
-  .eyebrow {
-    font-size: var(--text-micro);
-    line-height: var(--text-micro--line-height);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+  /* Labels, captions, nav and metadata: the body face, a step smaller,
+   * sentence case, untracked. */
+  .label {
+    font-size: var(--text-label);
+    line-height: var(--text-label--line-height);
   }
 
   /* Ghost pill: the system's single expressive gesture. */
   .pill {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    /* 12px + 18.4px line + 12px + 2px border ≈ 44px: comfortable touch target */
-    padding: 12px 33px;
+    gap: var(--space-8);
+    /* 12 + 18.4 line + 12 + 2 border ≈ 44px: a comfortable touch target */
+    padding: var(--space-12) var(--space-32);
     border: 1px solid currentColor;
     border-radius: var(--radius-buttons);
     font-size: var(--text-body-sm);
     line-height: 1.15;
     white-space: nowrap;
     transition:
-      letter-spacing var(--duration-glide) var(--ease-glide),
       border-color var(--duration-glide) var(--ease-glide),
       background-color var(--duration-quick) ease,
       color var(--duration-quick) ease;
   }
   .pill:hover {
-    letter-spacing: 0.04em;
+    background-color: var(--color-wash);
+  }
+  .pill:active {
+    background-color: var(--color-wash-strong);
   }
   .pill-inverse {
     color: var(--color-paper);
@@ -79,16 +110,30 @@
   }
   .pill-inverse:hover {
     border-color: var(--color-paper);
+    background-color: var(--color-wash-inverse);
+  }
+  .pill-inverse:active {
+    background-color: var(--color-wash-inverse-strong);
   }
 
   .tag {
     display: inline-block;
-    padding: 4px 12px;
+    padding: var(--space-4) var(--space-12);
     border: 1px solid var(--color-hairline);
     border-radius: var(--radius-tags);
-    font-size: var(--text-micro);
-    line-height: 1.36;
+    font-size: var(--text-caption);
+    line-height: var(--text-caption--line-height);
     color: var(--color-inkstone);
+    transition:
+      border-color var(--duration-quick) ease,
+      background-color var(--duration-quick) ease;
+  }
+  a.tag:hover {
+    border-color: var(--color-obsidian);
+    background-color: var(--color-wash);
+  }
+  a.tag:active {
+    background-color: var(--color-wash-strong);
   }
   .tag-inverse {
     border-color: var(--color-hairline-inverse);
@@ -101,8 +146,14 @@
   .link-quiet:hover {
     color: var(--color-felt);
   }
+  .link-quiet:active {
+    color: var(--color-pewter);
+  }
   .inverse .link-quiet:hover {
     color: var(--color-ash);
+  }
+  .inverse .link-quiet:active {
+    color: var(--color-pewter);
   }
 
   .rule {
@@ -169,8 +220,8 @@ html.js [data-split='rise'].is-in .wi {
   transform: translate3d(var(--mx, 0px), var(--my, 0px), 0);
   transition:
     transform var(--duration-glide) var(--ease-glide),
-    letter-spacing var(--duration-glide) var(--ease-glide),
-    border-color var(--duration-glide) var(--ease-glide);
+    border-color var(--duration-glide) var(--ease-glide),
+    background-color var(--duration-quick) ease;
 }
 
 /* Marquee */
