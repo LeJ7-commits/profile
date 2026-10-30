@@ -15,7 +15,7 @@ export const profile = {
   manifesto:
     'I build data platforms that notice what’s wrong before anyone downstream does.',
   summary:
-    'I work across the whole pipeline: ingestion, dimensional models, data-quality checks, and the AI tools that let non-engineers query data themselves. Right now that’s ad-sales and content data at Viaplay.',
+    'I work across the whole data pipeline, from ingestion and dimensional models to quality checks and the tools that let non-engineers query the data themselves. Right now that is ad-sales and content data at Viaplay.',
 };
 
 /**
