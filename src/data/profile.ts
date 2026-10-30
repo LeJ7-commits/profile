@@ -39,14 +39,20 @@ export const stack = [
   { group: 'Orchestration & transformation', items: ['Airflow', 'dbt', 'Meltano'] },
   { group: 'Cloud', items: ['AWS: S3, Redshift, Glue, Lambda, Step Functions', 'Azure: Data Factory, Blob, SQL', 'GCP: BigQuery, Vertex AI'] },
   { group: 'Lakehouse & streaming', items: ['Databricks', 'Delta Lake', 'Structured Streaming', 'PySpark'] },
-  { group: 'AI engineering', items: ['MCP', 'AI SDK', 'LangGraph'] },
+  { group: 'AI engineering', items: ['LangGraph', 'OpenAI SDK', 'Nebius Token Factory', 'Tavily'] },
   { group: 'Infrastructure', items: ['Terraform', 'Docker', 'GitHub Actions', 'Git / GitLab'] },
 ] as const;
 
-/** `href` is an optional public verification link (e.g. a Credly badge). */
+/** `href` is the public verification link (a Credly or Databricks credential page). */
 export const certifications: { name: string; href?: string }[] = [
-  { name: 'AWS Certified Solutions Architect, Associate' },
-  { name: 'Databricks Certified Data Engineer Associate' },
+  {
+    name: 'AWS Certified Solutions Architect, Associate',
+    href: 'https://www.credly.com/badges/ca55c3cb-eaa4-4574-beee-2b33da9f7eaf',
+  },
+  {
+    name: 'Databricks Certified Data Engineer Associate',
+    href: 'https://credentials.databricks.com/faaf8260-1d25-4858-84f4-62cd30133b05#acc.JieMIZDL',
+  },
   {
     name: 'Nebius Agentic AI Builder Certification',
     href: 'https://www.credly.com/badges/03967d4b-00ef-4e4d-8749-53eb02d5650b',

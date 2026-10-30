@@ -27,7 +27,7 @@ import AuroraWash from './AuroraWash.astro';
         {certifications.map((c) => (
           <li>
             {c.href ? (
-              <a href={c.href} target="_blank" rel="noopener" class="tag text-caption link-quiet" aria-label={`${c.name} (verify on Credly)`}>{c.name} ↗</a>
+              <a href={c.href} target="_blank" rel="noopener" class="tag text-caption link-quiet" aria-label={`${c.name} (verify credential)`}>{c.name} ↗</a>
             ) : (
               <span class="tag text-caption">{c.name}</span>
             )}
