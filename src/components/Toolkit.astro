@@ -7,14 +7,14 @@ import AuroraWash from './AuroraWash.astro';
 <section id="toolkit" data-band="light" class="relative isolate overflow-clip py-24 md:py-38">
   <AuroraWash class="left-[-15%] top-[140px] h-[380px] w-[55%]" />
   <div class="page">
-    <SectionHead index="02" label="Toolkit" title="Stack, certifications and education." />
+    <SectionHead title="Stack, certifications and education." />
 
     <div class="reveal border-t border-hairline grid gap-10 py-12 md:grid-cols-[180px_1fr] md:gap-10">
-      <p class="eyebrow text-felt">Stack</p>
+      <p class="label text-felt">Stack</p>
       <dl class="grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
         {stack.map((g) => (
           <div>
-            <dt class="eyebrow mb-3">{g.group}</dt>
+            <dt class="label mb-3 font-semibold">{g.group}</dt>
             <dd class="flex flex-col gap-1 text-body-sm text-inkstone">{g.items.map((i) => <span>{i}</span>)}</dd>
           </div>
         ))}
@@ -22,14 +22,14 @@ import AuroraWash from './AuroraWash.astro';
     </div>
 
     <div class="reveal border-t border-hairline grid gap-10 py-12 md:grid-cols-[180px_1fr] md:gap-10">
-      <p class="eyebrow text-felt">Certifications</p>
+      <p class="label text-felt">Certifications</p>
       <ul class="flex flex-wrap gap-3">
         {certifications.map((c) => (
           <li>
             {c.href ? (
-              <a href={c.href} target="_blank" rel="noopener" class="tag text-caption link-quiet" aria-label={`${c.name} (verify credential)`}>{c.name} ↗</a>
+              <a href={c.href} target="_blank" rel="noopener" class="tag" title={c.name} aria-label={`${c.label}, verify credential`}>{c.label}</a>
             ) : (
-              <span class="tag text-caption">{c.name}</span>
+              <span class="tag" title={c.name}>{c.label}</span>
             )}
           </li>
         ))}
@@ -37,20 +37,20 @@ import AuroraWash from './AuroraWash.astro';
     </div>
 
     <div class="reveal border-t border-hairline grid gap-10 py-12 md:grid-cols-[180px_1fr] md:gap-10">
-      <p class="eyebrow text-felt">Education</p>
+      <p class="label text-felt">Education</p>
       <ul class="flex flex-col gap-6">
         {education.map((e) => (
           <li class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
             <span class="text-body">{e.degree}<span class="text-felt">, {e.school}</span></span>
-            <span class="eyebrow text-felt shrink-0">{e.years}</span>
+            <span class="label text-felt shrink-0 tabular-nums">{e.years}</span>
           </li>
         ))}
       </ul>
     </div>
 
     <div class="reveal border-t border-hairline grid gap-10 py-12 md:grid-cols-[180px_1fr] md:gap-10">
-      <p class="eyebrow text-felt">Languages</p>
-      <p class="text-body text-inkstone">{languages.join(' · ')}</p>
+      <p class="label text-felt">Languages</p>
+      <p class="text-body text-inkstone">{languages.join(', ')}</p>
     </div>
   </div>
 </section>

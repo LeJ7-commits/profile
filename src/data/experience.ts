@@ -22,7 +22,7 @@ export const experience: Role[] = [
   {
     company: 'Viaplay',
     role: 'Data Engineer',
-    period: 'Aug 2026 – present',
+    period: 'Aug 2026 to present',
     location: 'Stockholm',
     intro: 'Ad-sales and content data for a Nordic streamer.',
     themes: [
@@ -80,7 +80,7 @@ export const experience: Role[] = [
   {
     company: 'Boston Scientific',
     role: 'Data Analyst, data engineering',
-    period: 'Aug 2023 – Jul 2025',
+    period: 'Aug 2023 to Jul 2025',
     location: 'Southeast Asia',
     intro: 'Two years owning the data infrastructure behind commercial and financial reporting for six markets and 200+ stakeholders.',
     themes: [

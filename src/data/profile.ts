@@ -43,25 +43,31 @@ export const stack = [
   { group: 'Infrastructure', items: ['Terraform', 'Docker', 'GitHub Actions', 'Git / GitLab'] },
 ] as const;
 
-/** `href` is the public verification link (a Credly or Databricks credential page). */
-export const certifications: { name: string; href?: string }[] = [
+/**
+ * `name` is the official title (read out by screen readers), `label` the short form shown on the page,
+ * `href` the public verification link (a Credly or Databricks credential page).
+ */
+export const certifications: { name: string; label: string; href?: string }[] = [
   {
     name: 'AWS Certified Solutions Architect, Associate',
+    label: 'AWS Solutions Architect, Associate',
     href: 'https://www.credly.com/badges/ca55c3cb-eaa4-4574-beee-2b33da9f7eaf',
   },
   {
     name: 'Databricks Certified Data Engineer Associate',
+    label: 'Databricks Data Engineer Associate',
     href: 'https://credentials.databricks.com/faaf8260-1d25-4858-84f4-62cd30133b05#acc.JieMIZDL',
   },
   {
     name: 'Nebius Agentic AI Builder Certification',
+    label: 'Nebius Agentic AI Builder',
     href: 'https://www.credly.com/badges/03967d4b-00ef-4e4d-8749-53eb02d5650b',
   },
 ];
 
 export const education = [
-  { degree: 'MSc Data Analytics & Business Economics', school: 'Lund University, Sweden', years: '2025–2026' },
-  { degree: 'BCom Business Analytics & Applied Economics', school: 'Monash University, Australia', years: '2020–2023' },
+  { degree: 'MSc Data Analytics & Business Economics', school: 'Lund University, Sweden', years: '2025 to 2026' },
+  { degree: 'BCom Business Analytics & Applied Economics', school: 'Monash University, Australia', years: '2020 to 2023' },
 ];
 
 export const languages = ['English', 'Mandarin', 'Cantonese', 'Bahasa', 'Swedish (learning)'];

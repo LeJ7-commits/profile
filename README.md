@@ -16,6 +16,10 @@ All copy lives in typed data files. There's no need to touch the components.
 
 `npm run build` type-checks these, so a missing field fails the build rather than the page.
 
+## Design notes
+
+`design/DESIGN.md` explains the design system and records the Hallmark polish pass; the stamp at the top of `src/styles/global.css` is its audit trail.
+
 ## Develop
 
 ```bash
